@@ -5,7 +5,7 @@ tags:
   - Rasberry Pi
   - NAS
 categories:
-  - 杂文
+  - 技文
 ---
 
 最近放弃使用 PC 主机了，所以又开始折腾起来树莓派了，买了一个硬盘柜接树莓派开 samba 服务存储下载的视频并提供给 Apple TV 的 infuse 观看。  

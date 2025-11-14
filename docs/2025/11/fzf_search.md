@@ -5,7 +5,7 @@ tags:
   - fzf
   - VSCode
 categories:
-  - 杂文
+  - 技文
 ---
 
 这几天因为一些事情需要使用 VSCode 之前在 Neovim 的时候习惯了使用 telescope 来
