@@ -97,7 +97,7 @@ module.exports = {
           },
           {
             text: "Telegram",
-            link: "https:/t.me/fatpandac",
+            link: "https://t.me/fatpandac",
             icon: "iconfont icon-telegram",
           },
           {
