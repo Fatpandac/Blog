@@ -12,6 +12,18 @@ module.exports = {
     },
   },
   head: [
+    [
+      "script",
+      {
+        async: "",
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9193612170661714",
+        crossorigin: "anonymous",
+      },
+    ],
+    [
+      "meta",
+      { name: "google-adsense-account", content: "ca-pub-9193612170661714" },
+    ],
     ["link", { rel: "icon", href: "/favicon.png" }],
     [
       "script",
