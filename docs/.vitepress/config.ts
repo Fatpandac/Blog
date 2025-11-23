@@ -20,7 +20,15 @@ export default defineConfig({
   vite: {
     plugins: [
       UnoCSS()
-    ]
+    ],
+    server: {
+      proxy: {
+        '/api': {
+          target: 'https://hidden-mud-7c6e.tingfeizheng.workers.dev',
+          changeOrigin: true,
+        }
+      }
+    }
   },
   sitemap: {
     hostname: 'https://fatpandac.com',

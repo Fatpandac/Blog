@@ -5,6 +5,7 @@ import 'dayjs/locale/zh-cn';
 import dayjs from 'dayjs';
 import { data as posts } from '../../data/posts.data';
 import { computed } from "vue";
+import Running from "../Atoms/Running.vue";
 
 
 const router = useRouter();
@@ -18,7 +19,7 @@ const frontmatter = computed(() => page.value?.frontmatter || {});
 <template>
   <div class="flex items-center justify-center flex-col gap-6 text-start">
     <div
-      class="w-full flex items-center justify-center flex-col gap-6 text-center md:(flex-row px-20 mb-22 gap-12 justify-start) lg:(px-40)">
+      class="w-full flex items-center justify-center flex-col gap-6 text-center md:(flex-row px-20 gap-12 justify-start) lg:(px-40)">
       <img class="w-40 h-40" :src="frontmatter.hero.avatar" />
       <div class="h-40 flex flex-col gap-4 items-center md:items-start">
         <h1 class="text-4xl font-bold">{{ frontmatter.hero.title }}</h1>
@@ -26,6 +27,10 @@ const frontmatter = computed(() => page.value?.frontmatter || {});
           {{ frontmatter.hero.subtitle }}
         </p>
       </div>
+    </div>
+    <Running />
+    <div class="w-full text-2xl font-bold text-start px-20 lg:px-40">
+      Recent Posts
     </div>
     <section class="w-full">
       <ul class="w-full p-0! m-0! list-none!">

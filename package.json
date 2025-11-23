@@ -10,10 +10,13 @@
   },
   "description": "My blog",
   "devDependencies": {
+    "@iconify-json/solar": "^1.2.5",
+    "@unocss/preset-icons": "^66.5.9",
     "@unocss/transformer-variant-group": "^66.5.9",
     "dotenv": "^16.0.3",
     "unocss": "^66.5.9",
     "vitepress": "2.0.0-alpha.15",
+    "vue": "^3.5.24",
     "yorkie": "^2.0.0"
   },
   "gitHooks": {

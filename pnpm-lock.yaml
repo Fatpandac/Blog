@@ -12,6 +12,12 @@ importers:
         specifier: ^1.11.19
         version: 1.11.19
     devDependencies:
+      '@iconify-json/solar':
+        specifier: ^1.2.5
+        version: 1.2.5
+      '@unocss/preset-icons':
+        specifier: ^66.5.9
+        version: 66.5.9
       '@unocss/transformer-variant-group':
         specifier: ^66.5.9
         version: 66.5.9
@@ -24,6 +30,9 @@ importers:
       vitepress:
         specifier: 2.0.0-alpha.15
         version: 2.0.0-alpha.15(@types/node@24.10.1)(jiti@2.6.1)(nprogress@0.2.0)(postcss@8.5.6)(sass@1.94.2)(stylus@0.54.8)
+      vue:
+        specifier: ^3.5.24
+        version: 3.5.24
       yorkie:
         specifier: ^2.0.0
         version: 2.0.0
@@ -238,6 +247,9 @@ packages:
 
   '@iconify-json/simple-icons@1.2.59':
     resolution: {integrity: sha512-fYx/InyQsWFW4wVxWka3CGDJ6m/fXoTqWBSl+oA3FBXO5RhPAb6S3Y5bRgCPnrYevErH8VjAL0TZevIqlN2PhQ==}
+
+  '@iconify-json/solar@1.2.5':
+    resolution: {integrity: sha512-WMAiNwchU8zhfrySww6KQBRIBbsQ6SvgIu2yA+CHGyMima/0KQwT5MXogrZPJGoQF+1Ye3Qj6K+1CiyNn3YkoA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1549,6 +1561,10 @@ snapshots:
     optional: true
 
   '@iconify-json/simple-icons@1.2.59':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/solar@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
 
