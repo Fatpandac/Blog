@@ -18,7 +18,7 @@ export function renderList(
   source: any,
   renderItem: (...args: any[]) => VNodeChild,
   cache?: any[],
-  index?: number
+  index?: number,
 ): VNodeChild[] {
   let ret: VNodeChild[];
   const cached = (cache && cache[index!]) as VNode[] | undefined;
@@ -39,7 +39,7 @@ export function renderList(
   } else if (isObject(source)) {
     if (source[Symbol.iterator as any]) {
       ret = Array.from(source as Iterable<any>, (item, i) =>
-        renderItem(item, i, undefined, cached && cached[i])
+        renderItem(item, i, undefined, cached && cached[i]),
       );
     } else {
       const keys = Object.keys(source);

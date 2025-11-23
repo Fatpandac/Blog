@@ -59,7 +59,7 @@ const props = defineProps({
 });
 
 const traingleSide = computed(() =>
-  Math.ceil(props.videoWidth / 2 + props.appendWidth)
+  Math.ceil(props.videoWidth / 2 + props.appendWidth),
 );
 </script>
 ```
@@ -129,8 +129,8 @@ const openCameraAnimate = () => {
           ${Math.tan(Math.PI / 8) * videoWidth.value}px,
           -${videoWidth.value}px)`,
       },
-      options
-    )
+      options,
+    ),
   );
   useAnimate(video, { filter: "brightness(1)" }, options);
 };
