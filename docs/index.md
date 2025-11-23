@@ -10,7 +10,7 @@ hero:
 ---
 
 <script setup lang="ts">
-import Home from './.vitepress/theme/components/Home/index.vue'
+import Home from './.vitepress/theme/components/Pages/Home.vue'
 </script>
 
 <Home />
