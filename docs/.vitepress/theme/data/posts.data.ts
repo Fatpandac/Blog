@@ -9,10 +9,10 @@ export type Post = {
     tags: string[]
 }
 
-declare const data: Post[]
+declare const data: Record<string, Post[]>
 export { data }
 
-export default createContentLoader('blog/**/*.md', {
+export default createContentLoader('./**/*.md', {
     excerpt: true,
     transform(posts) {
         return posts
@@ -24,6 +24,16 @@ export default createContentLoader('blog/**/*.md', {
                 tags: post.frontmatter.tags,
                 url: post.url
             }))
-            .sort((a, b) => +new Date(b.date) - +new Date(a.date))
+            .reduce((acc, post) => {
+                const lang = post.url.startsWith('/en/') ? 'en-US' : 'zh-CN'
+                if (!acc[lang]) {
+                    acc[lang] = []
+                }
+                if (post.categories && post.tags) {
+                    acc[lang].push(post)
+                    acc[lang] = acc[lang].sort((a, b) => +new Date(b.date) - +new Date(a.date))
+                }
+                return acc
+            }, {} as Record<string, Post[]>)
     }
 })

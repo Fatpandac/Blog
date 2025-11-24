@@ -6,6 +6,18 @@ export default defineConfig({
   lastUpdated: true,
   lang: 'zh-CN',
   outDir: '../public',
+  locales: {
+    root: {
+      label: '简体中文',
+      lang: 'zh-CN',
+      link: '/',
+    },
+    en: {
+      label: 'English',
+      lang: 'en-US',
+      link: '/en/',
+    },
+  },
   themeConfig: {
     logo: '',
     search: {
@@ -13,6 +25,8 @@ export default defineConfig({
     },
     siteTitle: false,
     aside: false,
+    nav: [
+    ]
   },
   head: [
     ['link', { rel: 'icon', href: '/favicon.png' }],
@@ -34,6 +48,6 @@ export default defineConfig({
     hostname: 'https://fatpandac.com',
   },
   rewrites: {
-    'blog/:year/:month/:slug.md': 'docs/:year/:month/:slug.md'
+    'zh/:rest*': ':rest*'
   },
 })
