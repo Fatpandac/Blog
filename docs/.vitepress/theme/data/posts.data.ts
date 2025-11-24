@@ -1,11 +1,12 @@
 import { createContentLoader } from 'vitepress'
 
-type Post = {
+export type Post = {
     title: string
     date: string
     description: string
     url: string
     categories: string[]
+    tags: string[]
 }
 
 declare const data: Post[]
@@ -20,6 +21,7 @@ export default createContentLoader('blog/**/*.md', {
                 date: post.frontmatter.date,
                 description: post.frontmatter.description || post.excerpt,
                 categories: post.frontmatter.categories,
+                tags: post.frontmatter.tags,
                 url: post.url
             }))
             .sort((a, b) => +new Date(b.date) - +new Date(a.date))
