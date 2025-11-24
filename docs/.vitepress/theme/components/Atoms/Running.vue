@@ -1,20 +1,24 @@
 <template>
-    <div v-if="Object.keys(data).length" class="w-full flex flex-col items-start justify-center gap-4 md:(px-20) lg:(px-40)">
+    <div v-if="Object.keys(data).length"
+        class="w-full flex flex-col items-start justify-center gap-4 md:(px-20) lg:(px-40)">
         <div class="text-2xl font-bold text-start">Recent Running Stats</div>
         <ul class="w-full list-none p-0! m-0!">
-            <li v-for="([key, entry], index) in Object.entries(data)" :key="key"
-                class="mb-2 border-b last:border-b-0 list-none flex items-center gap-4 tabular-nums">
-                <span class="font-bold min-w-30 text-md">{{ key }}</span>
-                <span class="min-w-45 text-md flex items-center">
-                    <div class="i-solar:running-round-line-duotone inline-block mr-1" />
+            <li v-for="([key, entry], _) in Object.entries(data)" :key="key"
+                class="mb-2 border-b last:border-b-0 list-none items-center tabular-nums flex gap-1 flex-wrap justify-start">
+                <span class="text-md flex items-center min-w-[175px] flex-1 gap-1">
+                    <div class="i-solar:calendar-date-line-duotone inline-block" />
+                    <span>Date: {{ key }}</span>
+                </span>
+                <span class="text-md flex items-center min-w-[175px] flex-1 gap-1">
+                    <div class="i-solar:running-round-line-duotone inline-block" />
                     <span>Distance: {{ entry.distance.toFixed(2) }} km</span>
                 </span>
-                <span class="min-w-45 text-md flex items-center">
-                    <div class="i-solar:spedometer-low-line-duotone inline-block mr-1" />
+                <span class="text-md flex items-center min-w-[175px] flex-1 gap-1">
+                    <div class="i-solar:spedometer-low-line-duotone inline-block" />
                     <span>Pace: {{ entry.pace.toFixed(2) }} min/km</span>
                 </span>
-                <span class="min-w-45 text-md flex items-center">
-                    <div class="i-solar:cup-paper-bold-duotone inline-block mr-1" />
+                <span class="text-md flex items-center min-w-[175px] flex-1 gap-1">
+                    <div class="i-solar:cup-paper-line-duotone inline-block" />
                     <span>Power: {{ entry.power.toFixed(2) }} W</span>
                 </span>
             </li>
@@ -40,5 +44,3 @@ onMounted(async () => {
     data.value = values.data;
 })
 </script>
-
-<style scoped></style>
