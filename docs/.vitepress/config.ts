@@ -32,5 +32,8 @@ export default defineConfig({
   },
   sitemap: {
     hostname: 'https://fatpandac.com',
-  }
+  },
+  rewrites: {
+    'blog/:year/:month/:slug.md': 'docs/:year/:month/:slug.md'
+  },
 })
