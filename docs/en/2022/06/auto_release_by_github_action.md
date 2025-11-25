@@ -1,32 +1,35 @@
 ---
-title: 使用 Github Action 自动化发布 Release
+title: Automating Release Publishing with GitHub Actions
 date: 2022-06-02
 tags:
   - GitHub
   - GitHub Action
 categories:
-  - 技文
+  - Tech Article
 ---
 
-最近在维护一个自己的开源项目 [fuck_cqooc](https://github.com/Fatpandac/fuck_cqooc) 这是一个用于刷重庆高校在线平台的网课的工具，毕竟大家都知道的很多时候我们是没有这么多精力去看这些网课的，还有就是一般这些网课也是为了完成任务而任务的，基本上来说水平就是那样和念 PPT 没有多大区别，在这上面花费时间看起来并不是那么的合理的。
+> [!info]
+> This article is auto translated by ChatGPT.
+
+Recently, I've been maintaining my open-source project [fuck_cqooc](https://github.com/Fatpandac/fuck_cqooc), which is a tool for completing online courses on Chongqing University's online platform. After all, as everyone knows, often we don't have enough energy to watch these online courses, and generally, these courses are just tasks to be completed, basically equivalent to reading PPTs with not much difference in quality. Spending time on them doesn't seem very reasonable.
 
 <!-- more -->
 
-扯远了，说回正题。
+But I digress; back to the main topic.
 
-在我编写这个程序的时候我遇到了一个问题，我每次更新一次版本之后都会去编译出一个可执行文件来，以便直接使用，当然你也可以直接通过 Python 来运行，但是对于这个程序的大多数受众来说，一个可以直接使用的程序，是远要比配置环境、安装 Python、执行脚本来的更好的，所以在每次版本更新我都得编译出一个 Mac 和 Win 版本，同时还要上传并且发布到 Release 上去。
+While writing this program, I encountered a problem: every time I updated a version, I would compile an executable file for direct use. Of course, you could also run it directly via Python, but for most of this program's audience, a directly usable program is much better than configuring the environment, installing Python, and executing scripts. So, with each version update, I had to compile Mac and Win versions, and then upload and publish them to Release.
 
-在这个过程中就存在着一些不太好的事情。
+There were some not-so-good things in this process.
 
-> 程序员应该学会抗拒一些反复或是重复性的工作！
+> Programmers should learn to resist repetitive or recurring tasks!
 
-正如上面这句话所说的，我们应该反对一些重复性的工作，这些工作没有什么重要的意义反而很占用时间。
+As the quote says, we should oppose repetitive work. Such tasks have no significant meaning and consume a lot of time.
 
-对于编译来说每一次的编译命令及其过程都是重复的几乎不会有什么差异，同时编译过程的等待也是索然无味的，所以这个过程我得想办法去除掉。
+For compilation, each compilation command and process is repetitive with almost no differences, and waiting during the compilation process is tedious. So, I had to find a way to eliminate this process.
 
-还有一个问题就是在上传的过程中，众所周知因为一些因素的影响，国内访问 GitHub 是很不稳定的，上传文件那就更不用说了，在发布 v0.0.2-beta 版本的时候我上传了一个打包好的 Win 文件花费了我将近一个小时到半个小时，从那一刻开始也就让我下定决心要去实现一个自动化发布了。
+Another problem was during the upload process. As is well known, due to certain factors, accessing GitHub from within China is very unstable, not to mention uploading files. When releasing version v0.0.2-beta, it took me almost an hour to half an hour to upload a packed Win file. From that moment, I resolved to implement automated publishing.
 
-在一定的了解后我决定使用 GitHub Action 来完成，毕竟在 GitHub 上面已经有了很多完整的案例了，并且通过 GitHub 本身来上传编译后的包也会变得快速多了，于是在多次尝试后写下了如下 GitHub Action 配置文件。
+After some research, I decided to use GitHub Actions, as there are already many complete examples on GitHub, and uploading compiled packages through GitHub itself would also be much faster. So, after multiple attempts, I wrote the following GitHub Action configuration file.
 
 ```yaml
 name: Release fuckcqooc
@@ -116,6 +119,4 @@ jobs:
           asset_content_type: application/gzip
 ```
 
-通过上面的配置文件就可以实现一个自动发布会的 Action，该 Action 会在推送 `tag` 之后自动激活，并编译出相应环境下的程序，并创建一个 Release 草稿，我仅需要在 Action 运行结束后确认修改 Release 草稿内的内容发布即可。但是其中还是有点小遗憾的，因为 GitHub Action 还没有 Mac arm 的虚拟环境所以还不能自动化打包出 arm 的程序，等待 GitHub 支持 arm 的虚拟环境后，仅需要复制修改为相应的环境及可。
-
-<GiscusComments />
+With the above configuration file, an automated release Action can be implemented. This Action will automatically activate after a `tag` is pushed, compile the program for the respective environment, and create a draft Release. I only need to confirm and modify the content of the Release draft after the Action runs. However, there's still a slight regret: GitHub Actions doesn't yet have a virtual environment for Mac ARM, so it cannot automate the packaging of ARM programs. Once GitHub supports an ARM virtual environment, I only need to copy and modify it for the corresponding environment.

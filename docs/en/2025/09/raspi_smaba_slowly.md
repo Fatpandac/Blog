@@ -1,42 +1,45 @@
 ---
-title: 树莓派 samba 传输速度慢排查
+title: Raspberry Pi Samba Transfer Speed Troubleshooting
 date: 2025-09-20
 tags:
-  - Rasberry Pi
+  - Raspberry Pi
   - NAS
 categories:
-  - 技文
+  - Tech Article
 ---
 
-最近放弃使用 PC 主机了，所以又开始折腾起来树莓派了，买了一个硬盘柜接树莓派开 samba 服务存储下载的视频并提供给 Apple TV 的 infuse 观看。  
-不过遇到一个问题就是树莓派的 samba 网络传输速度有点不太理想只有 10MB/s！于是就开始了排查...
+> [!info]
+> This article is auto translated by ChatGPT.
+
+Recently, I stopped using my PC and went back to tinkering with the Raspberry Pi. I bought a hard drive enclosure, connected it to the Pi, set up a Samba server to store downloaded videos, and used it with Infuse on Apple TV.  
+However, I ran into an issue: the Samba network transfer speed was quite poor—only around **10MB/s**! So I started investigating...
 
 <!-- more -->
 
-排查的步骤如下：
+Here are the troubleshooting steps:
 
-1. 排查是不是磁盘传输速度限制，通过如下命令：
+1. **Check if the disk speed is the bottleneck** using the following commands:
 
 ```bash
-hdparm -t /dev/sda  # 这里的 /dev/sda 改成对应的磁盘位置即可
+hdparm -t /dev/sda  # Replace /dev/sda with the correct disk path
 
-# 之后再运行这段，就可以知道硬盘的传输速度了
+# Then run this command to measure disk write speed
 dd if=/dev/zero of=/mnt/data/test bs=1M count=1024 oflag=direct
 ```
 
-2. 排查是不是网络传输速度限制，通过`iperf3`工具，如下命令：
+2. **Check if the network speed is the bottleneck** using `iperf3`:
 
 ```bash
-# 如果没有安装先通过下面命令安装
+# Install if not already installed
 sudo apt install iperf3
-# 通过这个命令在树莓派上启动服务端
+
+# Start the server on the Raspberry Pi
 iperf3 -s
 
-# 通过下面这个命令在另一台电脑上运行就可以知道网络传输的速度
-iperf3 -c <树莓派的 IP 地址> -t 30 -P 4
+# Run the client on another device to measure network speed
+iperf3 -c <Raspberry Pi IP address> -t 30 -P 4
 ```
 
-通过上面的排查，确定我遇到的问题是网络导致的，因为我树莓派使用的是 Wi-Fi 连接，最后改成网线成功解决。  
-查个题外话 infuse 对 kmv 的支持好像不是很好对于其他的格式读取速度有点低。
+After following the steps above, I confirmed that the issue was caused by the network. I had been using Wi-Fi on the Raspberry Pi, and switching to a wired Ethernet connection fixed the problem.  
 
-<GiscusComments />
+A side note: Infuse doesn't seem to handle KMV very well—other formats appear to have slower reading speeds.

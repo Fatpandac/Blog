@@ -1,29 +1,32 @@
 ---
-title: 同步 GitHub 仓库到 Gitee 通过 GitHub Action
+title: Sync GitHub Repository to Gitee via GitHub Action
 date: 2022-02-10
 tags:
   - GitHub
   - GitHub Action
   - CI/CD
 categories:
-  - 技文
+  - Tech Article
 ---
 
-今天看到突然间看到了 [@gyx8899](https://github.com/gyx8899) 的 [Blog](https://gyx8899.gitbook.io) 的[一篇文章](https://gyx8899.gitbook.io/blog/share/syncgithubtogitee)是关于如何用 Github Action 来实现 GitHub 仓库自动同步到 Gitee 上 🔃。
+> [!info]
+> This article is auto translated by ChatGPT.
+
+Today, I suddenly came across an [article](https://gyx8899.gitbook.io/blog/share/syncgithubtogitee) on [@gyx8899](https://github.com/gyx8899)'s [Blog](https://gyx8899.gitbook.io) about how to use GitHub Actions to automatically sync a GitHub repository to Gitee 🔃.
 
 <!-- more -->
 
-在看完文章并将其在我的 [fuck_cqooc](https://github.com/Fatpandac/fuck_cqooc) 和 [Homework](https://github.com/Fatpandac/Homework) 中实践之后，我开始感觉到不对劲了，是那种见到漂亮妹妹的那种不对劲，可能从他成功的把我的 GitHub 仓库同步到我对应的 Gitee 仓库的那一刻开始我就喜欢上他了吧！😍  
-后面我将会去看看 GitHub Action 的官方文档 📃，找一些有意思的 Action 玩玩。
+After reading the article and implementing it in my [fuck_cqooc](https://github.com/Fatpandac/fuck_cqooc) and [Homework](https://github.com/Fatpandac/Homework) repositories, I started to feel something special, like the feeling of seeing a beautiful girl. Perhaps from the moment it successfully synced my GitHub repository to my corresponding Gitee repository, I fell in love with it! 😍
+Later, I'll explore the official GitHub Actions documentation 📃 and play around with some interesting Actions.
 
-下面简单记录一下 [@gyx8899](https://github.com/gyx8899) 的 GitHub Action 使用方法：
+Below is a brief record of [@gyx8899](https://github.com/gyx8899)'s GitHub Action usage method:
 
-- 设置 GitHub 仓库的 Secrets 🔑
-  - `GITEE_USER` 仓库对应所有者的 ID
-  - `GITEE_PRIVATE_KEY` 对应的 Gitee 公钥的私钥，[配置方法](https://gitee.com/help/articles/4181)
-  - `GITEE_TOKEN` [获取链接](https://gitee.com/profile/personal_access_tokens)
-- 复制下面代码到对应仓库的 `.github/workflows/[action-file-name].yml`，需要注意当前分支要为远程仓库的默认分支
-- 推送到远程 GitHub 仓库即可
+* Set up GitHub repository Secrets 🔑
+  * `GITEE_USER`: The ID of the repository owner.
+  * `GITEE_PRIVATE_KEY`: The private key corresponding to the Gitee public key. [Configuration method](https://gitee.com/help/articles/4181).
+  * `GITEE_TOKEN`: [Get link](https://gitee.com/profile/personal_access_tokens).
+* Copy the code below into `.github/workflows/[action-file-name].yml` in the corresponding repository. Note that the current branch must be the default branch of the remote repository.
+* Push to the remote GitHub repository.
 
 ```yaml
 name: sync -> gitee
@@ -53,5 +56,3 @@ jobs:
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: ${{ github.event.repository.name }}
 ```
-
-<GiscusComments />

@@ -1,22 +1,26 @@
 ---
-title: 实现相机快门动画
+title: Implementing a Camera Shutter Animation
 date: 2023-12-04
 tags:
   - Vue
   - CSS
 categories:
-  - 小样
+  - Demo
 ---
 
-前段时间 Raycast 发布了最新版本 [v1.63.0](https://www.raycast.com/changelog/1-63-0)，这个版本的一个最重要的更新就是可以直接在 Raycast 调用摄像头并查看。
-在 Raycast 打开摄像头之前会有一个快门动画，当我看到这个动画的时候就立马勾起了我的好奇心，刚好 [Thomas Paul Mann](https://twitter.com/thomaspaulmann) 有发[推文](https://twitter.com/thomaspaulmann/status/1730217666663850468)介绍大致如何实现，于是我决定按图索骥实现一下。
+> [!info]
+> This article is auto translated by ChatGPT.
+
+Some time ago, Raycast released their latest version [v1.63.0](https://www.raycast.com/changelog/1-63-0). One of the biggest updates in this version is that you can now directly access and view the camera inside Raycast.
+Before the camera opens, there is a shutter animation. When I saw this animation, my curiosity was immediately piqued. Fortunately, [Thomas Paul Mann](https://twitter.com/thomaspaulmann) posted a [tweet](https://twitter.com/thomaspaulmann/status/1730217666663850468) explaining roughly how it works, so I decided to try implementing it myself.
 
 <!-- more -->
 
-![Raycast 截图](/images/raycast_camera.jpg)
+![Raycast Screenshot](/images/raycast_camera.jpg)
 
-从上面的 Raycast 动画截图可以看出是由八个直角三角行构成的，那么现在我们只需要实现一个直角三角形之后再依次旋转 45 度，这样就可以实现上图中的布局了。
-那么 直角三角形 组件的实现如下：
+From the screenshot of Raycast's animation above, you can see that it consists of eight right triangles. So all we need to do is implement a single right triangle and then rotate it in increments of 45 degrees to achieve the layout shown.
+
+Here’s the implementation of the right-triangle component:
 
 ```vue
 <template>
@@ -24,7 +28,7 @@ categories:
     :style="{
       height: `${traingleSide}px`,
       width: `${traingleSide}px`,
-      // 使得元素居中
+      // Center the element
       top: -traingleSide + videoHeight / 2,
       left: -appendWidth,
       rotate: `${45 * idx}deg`,
@@ -48,13 +52,13 @@ categories:
 import { computed } from "vue";
 
 const props = defineProps({
-  // 传入视频显示大小
+  // The size of the video display
   videoWidth: Number,
   videoHeight: Number,
-  // 传入需要直角三角边多加的大小
-  // 以便可以在动画的时候能够依旧覆盖得住 video
+  // Extra width added to the triangle side
+  // Ensures the video remains fully covered during the animation
   appendWidth: Number,
-  // 当前组件为第几个 以计算旋转角度
+  // The index of this triangle, used to calculate rotation
   idx: Number,
 });
 
@@ -64,7 +68,7 @@ const traingleSide = computed(() =>
 </script>
 ```
 
-上面就是 直角三角形 组件了，之后就可以写主页面了：
+With the right-triangle component ready, we can now write the main page:
 
 ```vue
 <template>
@@ -120,7 +124,7 @@ const openCameraAnimate = () => {
     easing: "ease-in-out",
   };
 
-  // 使得三角可以以一个接近圆形的开口不断扩大并退出
+  // Make the triangles expand outward in a circular-opening motion
   tList.value.map((item) =>
     useAnimate(
       item,
@@ -136,7 +140,7 @@ const openCameraAnimate = () => {
 };
 
 onMounted(() => {
-  // 调用摄像头
+  // Access camera
   navigator.mediaDevices
     .getUserMedia({
       video: {
@@ -148,9 +152,10 @@ onMounted(() => {
       video.value.srcObject = stream;
     })
     .catch((error) => {
-      console.error("访问摄像头失败:", error);
+      console.error("Failed to access camera:", error);
     });
-  // 摄像头内容加载好后显示并播放动画
+
+  // After video metadata loads, start playback and animation
   video.value.onloadedmetadata = () => {
     video.value.play();
     openCameraAnimate();
@@ -159,9 +164,7 @@ onMounted(() => {
 </script>
 ```
 
-这样就可以实现相机快门动画了！
+And with that, you can recreate the camera shutter animation!
 
-查看[源码](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/camera)，体验 <a href="/demo/camera.html">Demo</a>
-![演示视频 GIF](/images/camera.gif)
-
-<GiscusComments />
+Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/camera), and try the <a href="/demo/camera.html">Demo</a>.
+![Demo GIF](/images/camera.gif)

@@ -1,29 +1,32 @@
 ---
-title: 不使用 XML  配置 Spring MVC 项目
+title: Configuring Spring MVC Projects Without XML
 date: 2022-11-10
 tags:
   - Spring
   - XML
   - Java
 categories:
-  - 技文
+  - Tech Article
 ---
 
-这个学期开始学习 Spring 框架，在学习 Spring MVC 项目的时候我一开始是使用的 Spring Boot 但是后来老师说不能用这个，因为学的不是这个要是在期末考试的时候使用这个的话不会给分，于是我只能转回最原始的状态。
+> [!info]
+> This article is auto translated by ChatGPT.
+
+This semester, I started learning the Spring framework. When I began working on Spring MVC projects, I initially used Spring Boot, but later my instructor said I couldn't use it because it wasn't what we were studying, and I wouldn't get credit if I used it for the final exam. So, I had to revert to the most basic state.
 
 <!-- more -->
 
-我之前之所以使用 Spring Boot 是因为我不想写 XML，于是在被迫不能使用 Spring Boot 之后我需要找到一个不用 XML 的方法来设置 Spring MVC 项目。
+The reason I used Spring Boot before was that I didn't want to write XML. After being forced to stop using Spring Boot, I needed to find a way to set up a Spring MVC project without XML.
 
-于是我在网上搜索了一番发现了这个[视频](https://www.youtube.com/watch?v=Hk7fRv-GHpM&t=909s&ab_channel=SeleniumExpress)，根据这个视频整理了如下教程。
+So, I searched online and found this [video](https://www.youtube.com/watch?v=Hk7fRv-GHpM&t=909s&ab_channel=SeleniumExpress). Based on this video, I organized the following tutorial.
 
-> ⚠️  要求 Servlet > 3.0+
+> ⚠️ Requires Servlet > 3.0+
 
-### Step 1: 创建一个普通的 Maven 项目
+### Step 1: Create a regular Maven project
 
-![创建项目](/images/no_xml_start_spring_mvc_project_5.png)
+![Create project](/images/no_xml_start_spring_mvc_project_5.png)
 
-### Step 2: 配置 pom.xml 如下，添加 spring mvc 和 servlet 依赖，并将文件打包为 war
+### Step 2: Configure pom.xml as follows, adding spring mvc and servlet dependencies, and packaging the file as a war
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -62,27 +65,27 @@ categories:
 </project>
 ```
 
-### Step 3: 创建一个文件夹放置网页文件，这里创建一个名为 web 的文件来放置。
+### Step 3: Create a folder to place web files. Here, we create a folder named `web` for this purpose.
 
-![项目结构](/images/no_xml_start_spring_mvc_project_6.png)
+![Project structure](/images/no_xml_start_spring_mvc_project_6.png)
 
-### Step 4: 配置项目 Web 源
+### Step 4: Configure Project Web Source
 
-进入项目结构配置页面，Mac 用户可以使用快捷键 `cmd + ;` 进入。
+Enter the project structure configuration page. Mac users can use the shortcut `cmd + ;` to enter.
 
-选择 Facets 选项，然后会看到 Web(你的项目名) 以及一个 Spring(你的项目名)，如果没有你可以点击箭头所指的加号，选择 Web 再选择对应的项目，实现手动添加。
+Select the "Facets" option, then you will see "Web (your project name)" and "Spring (your project name)". If they are not present, you can click the plus sign indicated by the arrow, select "Web", and then choose the corresponding project to add it manually.
 
-找到 Web(你的项目名) 这个你项目对应的 Web 之后点击，看到显示的 Web Resource Directories 栏，将里面的内容清空，然后点击栏内的加号输入刚刚创建的 web 文件夹路径即可，填写完后点击 OK 推出项目结构配置页面。
+Once you find "Web (your project name)" for your project, click it. You'll see the "Web Resource Directories" bar. Clear its content, then click the plus sign within the bar and enter the path of the `web` folder you just created. After filling it in, click "OK" to exit the project structure configuration page.
 
-![项目设置](/images/no_xml_start_spring_mvc_project_1.png)
+![Project settings](/images/no_xml_start_spring_mvc_project_1.png)
 
-### Step 5: 编写配置文件
+### Step 5: Write Configuration Files
 
-在 Java 文件夹下面创建一个包名为 `config` 用于放置配置文件
+Create a package named `config` under the `Java` folder to place configuration files.
 
-![项目结构](/images/no_xml_start_spring_mvc_project_2.png)
+![Project structure](/images/no_xml_start_spring_mvc_project_2.png)
 
-在包 `config` 下创建一个名为 `MainWebAppInitializer` 的 Java 文件，这个文件是用于引导 Spring Web 应用，相当于替换了原来的 `web.xml` ，内部代码如下。
+Under the `config` package, create a Java file named `MainWebAppInitializer`. This file is used to bootstrap the Spring Web application, essentially replacing the original `web.xml`. Its internal code is as follows:
 
 ```java
 import org.springframework.web.WebApplicationInitializer;
@@ -95,12 +98,12 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) {
         var ctx = new AnnotationConfigWebApplicationContext();
-				// WebConfig 是 spring 内部配置接口 WebMvcConfigurer 的实现，
-				// 具体内容下面会提到
+				// WebConfig is an implementation of Spring's internal configuration interface WebMvcConfigurer.
+				// Specific content will be mentioned below.
         ctx.register(WebConfig.class);
         ctx.setServletContext(servletContext);
 
-				// 定义 Web 应用程序的入口点
+				// Define the entry point for the Web application
         var servlet = servletContext.addServlet("mvc", new DispatcherServlet(ctx));
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
@@ -108,7 +111,7 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
 }
 ```
 
-创建名为 `WebConfig` 的 Java 文件，用于配置 `Spring` ，其代码如下
+Create a Java file named `WebConfig` for configuring `Spring`, with the following code:
 
 ```java
 import org.springframework.context.annotation.Bean;
@@ -119,21 +122,21 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-// 启动 MVC
+// Enable MVC
 @EnableWebMvc
-// 将该文件设置为配置文件
+// Mark this file as a configuration file
 @Configuration
-// Spring 自动扫描并且装入bean容器
+// Spring automatically scans and loads into the bean container
 @ComponentScan(basePackages = "com.fatpandac")
 public class WebConfig implements WebMvcConfigurer {
 
-		// 添加主页路径并设置对应的页面(.jsp)文件
+		// Add home page path and set the corresponding page (.jsp) file
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
     }
 
-		// 配置 jsp 视图解析器
+		// Configure JSP view resolver
     @Bean
     public InternalResourceViewResolver jspViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -145,22 +148,20 @@ public class WebConfig implements WebMvcConfigurer {
 }
 ```
 
-### Step 6: 编写对应的页面
+### Step 6: Create JSP Pages
 
-在 `web` 文件夹下面创建 `/WEB-INF/jsp/index.jsp` 文件，内容如下
+Create the `/WEB-INF/jsp/index.jsp` file under the `web` folder with the following content:
 
 ```html
 <h1>Hello World</h1>
 ```
 
-### Step 7: 配置 Tomcat
+### Step 7: Configure Tomcat
 
-将对应的 Artifacts 添加到部署即可如下图
+Add the corresponding Artifacts to the deployment as shown in the figure below.
 
-![Tomcat 配置](/images/no_xml_start_spring_mvc_project_3.png)
+![Tomcat Configuration](/images/no_xml_start_spring_mvc_project_3.png)
 
-启动 Tomcat，成功运行如下图。
+Start Tomcat, and it should run successfully as shown in the figure below.
 
-![运行网页效果](/images/no_xml_start_spring_mvc_project_4.png)
-
-<GiscusComments />
+![Demo](/images/no_xml_start_spring_mvc_project_4.png)

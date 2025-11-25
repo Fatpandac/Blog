@@ -1,18 +1,21 @@
 ---
-title: 一个有趣的面板
+title: An Interesting Panel
 date: 2023-11-30
 tags:
   - Vue
   - CSS
 categories:
-  - 小样
+  - Demo
 ---
 
-之前在很多地方都有看到一个有趣的组件，这个组件在底部没有东西的情况下看起来就像是一个完整的纯色面板，但当该面板下方有物体经过的时候这个面板的庐山真面目就会显现，物体经过面板的对应位置会出现一个个小孔透出这个物体的对应颜色。
+> [!info]
+> This article is auto translated by ChatGPT.
+
+I've seen an interesting component in many places. When there's nothing underneath, this component looks like a solid-colored panel. But once something passes underneath it, the true nature of the panel is revealed — small holes appear at the corresponding positions, showing the color of the object moving behind it.
 
 <!-- more -->
 
-经过观察这些网页的页面的组件可以知道其实最主要的实现是通过下面这个 CSS
+After inspecting these components on various pages, we can see that the core implementation relies mainly on the following CSS:
 
 ```css
 backdrop-filter: saturate(50%) blur(4px);
@@ -20,11 +23,11 @@ background-image: radial-gradient(transparent 1px, #fff 1px);
 background-size: 4px 4px;
 ```
 
-`blackdrop-filter` 主要就是实现背景的模糊可以是的颜色润开，使得呈现在小孔里面的颜色更加的有层次感
-`background-image` 实现在 Div 上的一个个小孔的样式, `transparent` 为每一个小孔可以让面板下方的颜色透出，`#fff` 为面板的颜色
-`background-size` 定义每一个小孔整体的大小并重复覆盖整个面板
+`backdrop-filter` creates a blurred background effect, allowing colors beneath the panel to spread softly and giving the visible colors inside the small holes a richer appearance.
+`background-image` creates the dotted hole pattern on the div. `transparent` defines each hole so that the color beneath can pass through, while `#fff` represents the base color of the panel.
+`background-size` defines the size of each hole unit and tiles it across the entire panel.
 
-具体代码如下：
+Here is the full code:
 
 ```vue
 <template>
@@ -68,7 +71,5 @@ watch([x, y], (newValue) => {
 </style>
 ```
 
-体查看[源码](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/panel)，验 <a href="/demo/panel.html">Demo</a>
-![演示视频 GIF](/images/panel.gif)
-
-<GiscusComments />
+Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/panel), and try the <a href="/demo/panel.html">demo</a>.
+![Demo GIF](/images/panel.gif)

@@ -1,22 +1,25 @@
 ---
-title: 屏蔽一些不友好的人
+title: Blocking Unfriendly People
 date: 2022-03-04
 tags:
   - GitHub
   - React
 categories:
-  - 杂文
+  - Other
 ---
 
-今天在 React 的 GitHub 仓库的 issues 上看到了很多人发表了很多不正当言论的 issues，很是无语 💬，屎 💩 都喷到国外去了……
+> [!info]
+> This article is auto translated by ChatGPT.
 
-**_于是决定写 ✍🏻️ 一个脚本来屏蔽掉这些人_**
+Today, I saw many inappropriate comments in issues on the React GitHub repository, which was quite frustrating 💬. Some negative content 💩 even made it overseas...
+
+**_So, I decided to write ✍🏻️ a script to block these individuals._**
 
 <!-- more -->
 
-感谢 [@sxzz](https://github.com/sxzz) 提供的[数据](https://raw.githubusercontent.com/sxzz/github-block-tool/main/analyze.json)，于是就有了下面的脚本 👇🏻
+Thanks to [@sxzz](https://github.com/sxzz) for providing the [data](https://raw.githubusercontent.com/sxzz/github-block-tool/main/analyze.json), which led to the script below 👇🏻:
 
-```Python
+```python
 import requests
 import json
 
@@ -46,9 +49,6 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+**The following accounts have been blocked. If anyone was blocked by mistake, please [contact me](mailto:i@fatpandac.com?subject=Blocked%20by%20mistake), and I apologize in advance 🙏🏻.**
 
-**最终屏蔽了以下账户，如有误杀劳烦您[请联系我](mailto:i@fatpandac.com?subject=被误杀)，先说声抱歉 🙏🏻**
-
-[文件链接](https://gist.github.com/Fatpandac/61b82660e13b9f58d072938c93b3c947#file-blocker-txt)
-
-<GiscusComments />
+[File Link](https://gist.github.com/Fatpandac/61b82660e13b9f58d072938c93b3c947#file-blocker-txt)

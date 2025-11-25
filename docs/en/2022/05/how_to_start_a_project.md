@@ -1,73 +1,74 @@
 ---
-title: 如何开始一个项目
+title: How to Start a Project
 date: 2022-05-04
 tags:
   - git
   - GitHub
-  - 开发
+  - Development
 categories:
-  - 技文
+  - Tech Article
 ---
 
-经过长达将近一个月的时间总算结束了项目的开发，这算是我第一次以团队合作的形式以较为标准的工业化流程进行开发。在开发的过程中遇到了许多问题同时也解决了很多问题，遇到的这些问题以及解决方法都将会是今后开发过程中的宝贵经验，所以我打算在此分享出来，希望能对你有所帮助 🤝
+> [!info]
+> This article is auto translated by ChatGPT.
+
+After nearly a month, the project development has finally concluded. This was my first experience developing in a team setting with a relatively standardized industrial process. During development, I encountered many problems and also solved many. These problems and their solutions will be valuable experience for future development, so I intend to share them here, hoping they can be helpful to you 🤝.
 
 <!-- more -->
 
-### 开始前的讨论
+### Pre-Project Discussion
 
-在开始一个项目之前，组员需要进行详细的讨论，在讨论的过程中可以使得组员之间对项目有更加清晰和统一的认识，这将有效的减少后续开发过程中组员之间矛盾的产生。
+Before starting a project, team members need to have a detailed discussion. This discussion helps team members gain a clearer and more unified understanding of the project, which will effectively reduce conflicts among team members during subsequent development.
 
-讨论的内容包括但不限于一下几种：
+Discussion topics include, but are not limited to, the following:
 
-1. 需要实现什么功能？
-2. 什么风格的 UI 界面？
-3. 使用怎样的组件、框架？
-4. ......
+1.  What functionalities need to be implemented?
+2.  What kind of UI style?
+3.  Which components and frameworks to use?
+4.  ......
 
-### UI 设计
+### UI Design
 
-在开始编写项目代码前应该先设计出项目的 UI 界面，并且设计出界面上的各种展示、交互、动画等，推荐使用了 `Figma` 作为 UI 界面设计工具。
+Before starting to write project code, the project's UI interface should be designed first, including various displays, interactions, and animations on the interface. `Figma` is recommended as the UI interface design tool.
 
-UI 界面的设计应该交由组员内审美水平较高且对实现方式有一定了解的人，毕竟你和我都一样不想看到界面设计的组员天天和代码实现的组员骂架的情况。当然在设计界面的时候记得安排负责实现的组员一起参加，共同协商是否能够实现是否需要做出一些妥协，你永远也不能低估设计界面这帮人的天马行空的想象力。
+UI interface design should be handled by team members with a higher aesthetic sense and some understanding of implementation methods. After all, neither you nor I want to see UI designers constantly arguing with code implementers. Of course, when designing the interface, remember to include the team members responsible for implementation to collectively discuss whether it can be achieved and if any compromises need to be made. You can never underestimate the wild imagination of UI designers.
 
-在界面设计完成后需要全部组员在该界面上不断的演练各种操作流程，找出界面中存在的不合理不合适的地方，进行修改，不断重复以上步骤直到得出都满意的界面为止。
+After the interface design is complete, all team members need to repeatedly practice various operation flows on the interface, identify any unreasonable or inappropriate elements, and make modifications. Repeat these steps until a satisfactory interface is achieved.
 
-得到满意的界面之后，实现的组员需要对界面进行分析，将界面中重复多次的内容提炼出来，并分析其使用到的数据、涉及到的操作实现以及动画的实现等，这些内容在后续开发中是需要写成组件的！
+Once a satisfactory interface is obtained, the implementing team members need to analyze the interface, extract repetitive elements, and analyze the data used, operational implementations, and animation implementations. These contents will need to be written as components in subsequent development!
 
-### 编写代码
+### Writing Code
 
-> 工欲善其事，必先利其器。
+> To do good work, one must first sharpen one's tools.
 
-在开始编写代码前我们需要使用一个版本管理器对代码进行版本管理以便实现敏捷开发以及对 bug 的溯源，同时我们还需要一个远程代码托管平台来完成组员之间的代码同步和测试。
+Before starting to write code, we need to use a version control system for code version management to enable agile development and bug traceability. At the same time, we also need a remote code hosting platform to facilitate code synchronization and testing among team members.
 
-版本管理器可以选择使用 `git`。
+For version control, `git` can be chosen.
 
-远程代码托管平台有很多的方式，你可以使用 `gitee` 也可以使用 `github` 或者选择自己搭建一个 `gitlab`，首推当然是选用自己搭建，但是你如果觉得自己搭建太麻烦可以选择使用 `github` 但是你可能会偶尔出现链接不上的情况，当然这是有办法解决的 🪜，不到万不得已最好别选择 `gitee` 因为你我都懂的。
+There are many options for remote code hosting platforms. You can use `Gitee` or `GitHub`, or choose to set up your own `GitLab`. Self-hosting is highly recommended, but if you find it too troublesome, you can choose `GitHub`, though you might occasionally experience connectivity issues. Of course, there are ways to solve this 🪜. Unless absolutely necessary, it's best not to choose `Gitee`, as we both know why.
 
-选择好工具后就需要设计开发流程了，这里我以两个开发一个测试为例。
+After selecting the tools, the development process needs to be designed. Here, I'll use an example of two developers and one tester.
 
-在开始一个新功能的开发时需要开发从主分支开一个新分支并合理的对分支进行命名，创建好分支后即可开始代码的编写，编写完成后即可上传到远程代码托管平台提交 PR 交由测试，提交 PR 之后开发就可以切换或创建新的分支完成其他新的功能，测试则需要将 PR pull 下来进行测试之后反馈 bug，开发收到 bug 反馈之后需要切换到该 bug 所属分支修复 bug，修复后将代码推到远程仓库交由测试，以此反复直到测试结果没有问题之后，测试即可将代码合并到主分支中。
+When starting development on a new feature, a developer needs to create a new branch from the main branch and name it appropriately. After creating the branch, code writing can begin. Once completed, it can be pushed to the remote code hosting platform and a PR submitted for testing. After submitting the PR, the developer can switch or create new branches to work on other new features. The tester needs to pull the PR to test it and then provide bug feedback. Upon receiving bug feedback, the developer needs to switch to the branch corresponding to that bug to fix it. After fixing, the code is pushed to the remote repository for testing again. This cycle repeats until the test results are satisfactory, after which the tester can merge the code into the main branch.
 
-有时候一个功能需要两个开发同时开发完成，如页面样式页和页面逻辑处理分别由两个开发完成，这时候负责页面样式的开发需要先创建一个分支完成页面样式的编写之后提交到远程代码托管平台并提交 darft PR，负责逻辑的开发从远程代码托管平台将代码 pull 下来继续在该分支上完善逻辑代码，当两个开发都完成了这个功能之后，就可以激活该 PR 交由测试，往复上诉流程直到可以合并。
+Sometimes, a feature requires two developers to complete simultaneously, such as one developer handling page styling and another handling page logic. In this case, the developer responsible for page styling needs to first create a branch, complete the page styling, then commit it to the remote code hosting platform and submit a draft PR. The developer responsible for logic pulls the code from the remote code hosting platform and continues to refine the logic code on the same branch. Once both developers have completed the feature, the PR can be activated for testing. The aforementioned process is repeated until it can be merged.
 
 ![image-20220504233507719](/images/dSAK3LIixm5jf48.png)
 
-### 文档编写
+### Documentation Writing
 
-通常编写文档的时候我们需要多人合作共同完成，毕竟代码并不是由一个人完成的，各有分工。
+Usually, when writing documentation, multiple people need to collaborate, as code is not written by one person and there are different divisions of labor.
 
-使用 `notion` 很好的解决了需要多人协同完成编写的需求。
+`Notion` greatly solves the need for multiple people to collaboratively write documentation.
 
-将文档所需要的内容每一个小项创建为一个页面，之后再将每个页面链接到一个表格中，表格中除了连接到的文件外，还需要有另外几个数据分别是：
+Create a separate page for each small item required in the document. Then, link each page to a table. In addition to the linked files, the table also needs several other data points:
 
-1. 文件，用于存放文档中包含的图片等素材文件，这将方便文档后续的迁移
-2. 标签，用于标记该项的完成状态
-3. 编辑者，用于标记编写该项的组员，以便后续审核反馈
-4. 审查选择框，标记该项是否经过审核
-5. 审查者，用于指定负责审查该项的组员
+1.  Files: Used to store image assets and other materials included in the document, which will facilitate future migration of the document.
+2.  Tags: Used to mark the completion status of the item.
+3.  Editor: Used to identify the team member who wrote the item, for subsequent review and feedback.
+4.  Review checkbox: Marks whether the item has been reviewed.
+5.  Reviewer: Specifies the team member responsible for reviewing the item.
 
-![notion 表格图](/images/iT9ZapdImAVhwR1.jpg)
+![notion table diagram](/images/iT9ZapdImAVhwR1.jpg)
 
-至此开发中的基本问题解决方案都已罗列出来，如有什么更好的建议欢迎留言 ✉️
-
-<GiscusComments />
+This concludes the basic problem-solving solutions in development. If you have any better suggestions, please leave a message ✉️.

@@ -1,19 +1,22 @@
 ---
-title: Vite 代理实现动态变更 target 及目标地址
+title: Vite Proxy Implementation for Dynamic Target Changes and Target Addresses
 date: 2023-07-27
 tags:
   - Vite
   - Proxy
 categories:
-  - 技文
+  - Tech Article
 ---
 
-最近在写一个 [bilibili](https://bilibili.com) 的第三方客户端 [biilii](https://biilii.fatpandac.com) 使用的构建工具是 [Vite](https://cn.vitejs.dev/guide/)，遇到一个问题获取到的视频的地址因为使用的分布式存储得到的链接的服务器地址并不是唯一的，这时候就得需要给代理配置动态目标，在查找一些资料后没有发现相关的操作于是就自己摸索了一下方法
+> [!info]
+> This article is auto translated by ChatGPT.
+
+Recently, while writing a third-party client [biilii](https://biilii.fatpandac.com) for [bilibili](https://bilibili.com) using [Vite](https://cn.vitejs.dev/guide/) as the build tool, I encountered a problem: the addresses of the videos obtained were not unique due to distributed storage. This meant I needed to dynamically change the proxy's target. After searching for relevant information and finding no direct solutions, I explored a method myself.
 
 <!-- more -->
 
-要实现这个想法，首先当然是要去看对应部分的源码看看它到底是如何工作的，这样才能知道该如何处理。
-于是我就打开了 Vite 的 GitHub 仓库找到[对应的代码](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts)，这一个文件就是代理服务器相关的代码了，在这里我们可以看出配置通过（L8）的 `Object.keys(options)` 遍历后生成对应的 proxy 代理服务器 和 相关的配置 保存到了 proxies 中，期间还运行了配置当中（L18）的 configure 方法（这个是后续的关键），函数的最后（L33）返回了 `viteProxyMiddleware` 其中会吧 proxies 当中匹配的对应代理服务器以及配置取出，最后（L46）使用 `proxy.web(req, res, options)` 运行代理
+To achieve this, the first step is, of course, to examine the source code of the relevant part to understand how it works, which will then inform how to proceed.
+So, I opened Vite's GitHub repository and found the [corresponding code](https://github.com/vitejs/vite/blob/main/packages/vite/src/node/server/middlewares/proxy.ts). This file contains the proxy server related code. From this, we can see that the configuration, after being iterated through `Object.keys(options)` (L8), generates corresponding proxy servers and related configurations, which are then saved to `proxies`. During this process, the `configure` method (L18) in the configuration is also executed (this is key later). At the end of the function (L33), `viteProxyMiddleware` is returned, which retrieves the matching proxy server and configuration from `proxies`. Finally (L46), `proxy.web(req, res, options)` is used to run the proxy.
 
 ```ts{8,18,33,46}
 export function proxyMiddleware(
@@ -70,9 +73,9 @@ export function proxyMiddleware(
 }
 ```
 
-通过上面的分析可以得出我们可以在 `configure` 当中去修改 `opts` 当中的 `target` 修改过后的 `opts` 会在最后传入 `proxy.web(req, res, options)` 当中运行，我们只要根据 `configure` 提供的 `proxy` 获取对应的 URL 这样我们就可以实现根据 URL 来动态的修改 `target`，实现代理分布式的资源链接
+From the above analysis, we can conclude that we can modify the `target` in `opts` within the `configure` method. The modified `opts` will then be passed to `proxy.web(req, res, options)`. By using the `proxy` provided by `configure` to obtain the corresponding URL, we can dynamically modify the `target` based on the URL, thereby enabling the proxy for distributed resource links.
 
-其中 URL 要保留有服务器地址以备后续匹配出目标地址并更换 `target` 的值，如 `https://cn-sxxa-cm-11-04.bilivideo.com/path/to/video` 则替换为使用 `/bilivideo/cn-sxxa-cm-11-04.bilivideo.com/path/to/video` 请求，具体代码如下：
+The URL should retain the server address to facilitate matching the target address and changing the `target` value later. For example, `https://cn-sxxa-cm-11-04.bilivideo.com/path/to/video` would be replaced with a request using `/bilivideo/cn-sxxa-cm-11-04.bilivideo.com/path/to/video`. The specific code is as follows:
 
 ```ts
 export default defineConfig({
@@ -86,7 +89,7 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/bilivideo\/.*?\//, ""),
         configure: (proxy, options) => {
           proxy.on("proxyReq", (proxyReq) => {
-            // 在这里通过正则匹配获取目标服务器地址
+            // Obtain the target server address by regex matching here
             const target = proxyReq.path.match(/\/bilivideo\/(.*?)\//)![1];
             if (target) options.target = `https://${target}/`;
           });
@@ -97,6 +100,4 @@ export default defineConfig({
 });
 ```
 
-通过上述方法就可以实现 Vite 代理根据 URL 来动态变更 `target` 配置了
-
-<GiscusComments />
+Using the method described above, the Vite proxy can dynamically modify the `target` configuration based on the URL.

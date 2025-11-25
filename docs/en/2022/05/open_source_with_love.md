@@ -1,40 +1,41 @@
 ---
-title: 用爱开源 ，让世界更美好
+title: Open Source with Love, Making the World Better
 date: 2022-05-20
 tags:
-  - 开源
+  - Open Source
 categories:
-  - 杂文
+  - Other
 ---
 
-很难想象我们当今的世界没有开源软件的话会是什么样子的！
+> [!info]
+> This article is auto translated by ChatGPT.
 
-如果没有开源，我们现在需要开发一个程序我们就需要从头开始编写，自己动手造各种轮子，这就像是我们大一完成程序设计实训那样，完全通过自己动手完成每一功能的代码实现，那真的是一段煎熬的回忆 😞。
+It's hard to imagine what our world would be like today without open-source software!
+
+Without open source, if we needed to develop a program now, we would have to start from scratch, building all sorts of wheels ourselves. This would be like completing programming practice in our freshman year, entirely implementing every function's code by hand—truly an agonizing memory 😞.
 
 <!-- more -->
 
-但有了开源将会截然不同了，因为开源我们可以在规定的开源协议下免费的使用别人已经编写好的代码，这样我们就不需要再去造轮子了，例如在编写 Python 爬虫的时候我们仅需要安装 requests 包即可完成 HTTP 请求，有了开源我们能更加高效快速的实现期望的功能，使得我们编写代码变的更加舒服 ☺️。
+But with open source, it's completely different. Because of open source, we can freely use code that others have already written under specified open-source licenses. This means we no longer need to reinvent the wheel. For example, when writing a Python web crawler, we only need to install the `requests` package to make HTTP requests. With open source, we can implement desired functionalities more efficiently and quickly, making coding a much more comfortable experience ☺️.
 
-从 20 年开始我正式接触了开源，刚开始阶段我主要还是开源自己编写的代码可能是作业或则一些简单的小程序小游戏，当然任何内容的开源在开源世界来说都是欢迎的，没有人会因为你的开源代码、内容太菜而说你。到了 21 年末我开始真正的参与到了别人的开源项目中这也是我的开源元年在哪之后我不断的向开源仓库提交了许多代码。
+I officially got involved with open source in 2020. In the initial stage, I mainly open-sourced code I wrote myself, perhaps for homework or some simple mini-programs and games. Of course, any open-source content is welcome in the open-source world; no one will criticize you for your open-source code or content being "too basic." By the end of 2021, I truly began participating in other people's open-source projects. This was my open-source元年 (first year of open source), and since then, I've continuously submitted a lot of code to open-source repositories.
 
-目前仅对两个代码仓库提交了代码，一个是专注于生成各类网站的 RSS 订阅程序 [RSSHub](https://github.com/DIYgod/RSSHub)，另一个是 MacOS 系统上的快捷启动软件 Raycast 的 [ script-commands](https://github.com/raycast/script-commands)。其中贡献次数最多的当属于 RSSHub。
+Currently, I've only submitted code to two repositories: [RSSHub](https://github.com/DIYgod/RSSHub), which focuses on generating RSS feeds for various websites, and [script-commands](https://github.com/raycast/script-commands) for the macOS quick launch software Raycast. Among these, RSSHub has received the most contributions.
 
-截至撰写，我已向 RSSHub 提交了 101 次 [PR](https://github.com/DIYgod/RSSHub/commits?author=Fatpandac)，而 Raycast 的 script-commands 只有两次。
+As of writing, I have submitted 101 [PRs](https://github.com/DIYgod/RSSHub/commits?author=Fatpandac) to RSSHub, while Raycast's script-commands only has two.
 
-在提交 PR 的过程中我看到开源社区的温暖以及相互帮助。
+In the process of submitting PRs, I witnessed the warmth and mutual help within the open-source community.
 
-在提交 PR 到 RSSHub 以及 script-commands 仓库的过程中，仓库的管理员（[TonyRL](https://github.com/DIYgod/RSSHub/commits?author=TonyRL)、[DIYgod](https://github.com/DIYgod)、[unnamedd](https://github.com/unnamedd)、[dehesa ](https://github.com/dehesa)等 ）对我的代码指出了很多有用的意见，也让我感受到了开源社区的那种 ❤️️ 大家互相平等没有人会因为你身上有什么样的标签、你的代码水平怎样而对你嗤之以鼻。
+When submitting PRs to the RSSHub and script-commands repositories, the repository administrators ([TonyRL](https://github.com/DIYgod/RSSHub/commits?author=TonyRL), [DIYgod](https://github.com/DIYgod), [unnamedd](https://github.com/unnamedd), [dehesa](https://github.com/dehesa), etc.) provided many useful suggestions for my code. This made me feel the spirit of the open-source community ❤️️, where everyone is equal and no one looks down on you because of your labels or coding proficiency.
 
-参与开源能让更多的人使用到我编写的代码这难道不是一件很酷的事情吗？
+Isn't it cool that participating in open source allows more people to use the code I've written?
 
-也许在有一天你能遇到一个正在使用你编写的开源代码的用户，你可以和旁边的人说上一句
+Maybe one day you'll encounter a user who's using your open-source code, and you can proudly say to the person next to you:
 
-> 嘿，那哥们在使用我写的代码！
+> Hey, that guy is using the code I wrote!
 
-这是一件多么酷的事情啊！
+How cool is that!
 
-其实参与到开源项目并没有什么难度，只要你有参与到开源项目的想法，那你就应该立即行动起来，向其他人的项目提交 PR 、issues 或将自己的项目开源等，你提交的每一个 PR、提交的每一个 issues、开源的每一项目，对于开源世界来说都是一次意义非凡的贡献。
+In fact, there's no difficulty in participating in open-source projects. As long as you have the idea of contributing to open source, you should act immediately. Submit PRs, issues to other people's projects, or open-source your own projects. Every PR you submit, every issue you raise, and every project you open-source is an invaluable contribution to the open-source world.
 
-用爱开源，让世界更美好吧！ ❤️️
-
-<GiscusComments />
+Open source with love, and make the world a better place! ❤️️

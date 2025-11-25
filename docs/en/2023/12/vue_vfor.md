@@ -1,17 +1,20 @@
 ---
-title: Vue3 v-for 的实现
+title: How Vue 3 Implements v-for
 date: 2023-12-05
 tags:
   - Vue
 categories:
-  - 技文
+  - Tech Article
 ---
 
-前段时间在写一个动画的时候无意中发现 v-for 居然可以直接使用 `Array(8)` 进行循环，这就有意思了 🤔
+> [!info]
+> This article is auto translated by ChatGPT.
+
+Some time ago, while writing an animation, I accidentally discovered that v-for can directly loop over `Array(8)`. That caught my attention 🤔
 
 <!-- more -->
 
-还是老样子遇到这种问题第一时间当然是去看[源码](https://github.com/vuejs/core/blob/9ea2b868be765ca8b6a766004a3b6dfff03b76d3/packages/runtime-core/src/helpers/renderList.ts#L53C1-L96C2)了，从 Vue3 的源码中可以找到这一部分关于 v-for 的实现代码：
+As usual, when encountering something like this, the first thing to do is check the [source code](https://github.com/vuejs/core/blob/9ea2b868be765ca8b6a766004a3b6dfff03b76d3/packages/runtime-core/src/helpers/renderList.ts#L53C1-L96C2). In Vue 3’s source, we can find the implementation of v-for here:
 
 ```ts
 export function renderList(
@@ -60,14 +63,19 @@ export function renderList(
 }
 ```
 
-从上面的源码一步步的看：
+Let’s break down the source step by step:
 
-**首先**如果循环的数据是一个数组或是字符串的话，就会通过他们的长度 new 一个新的数组再循环相依长度次数渲染每一个节点放入该数组中，就是这样所以才会有了我一开始遇到的问题 `Array(8)` 也可以 v-for 渲染  
-**紧接**着如果不是数组或字符串而是一个数字的话 v-for 一样也是可以渲染的，不过只能传入 _整数_ 或 _小数位为零的数_ 要不然无法正常 `new Array()`，以及在开发模式会给出警告 `The v-for range expect an integer value but got ${source}.`  
-**再者**如果你 v-for 的是一个对象的话也是可以的这会先判断你传入的数据有没有实现迭代器如果实现了就会使用 `Array.from` 去遍历渲染节点，没有则会使用 `Object.keys` 获取到 keys 再 new 一个和 keys 相同长度的数组并渲染节点放入。
+**First**, if the looped value is an array or a string, Vue creates a new array using their length and renders each item into it. This explains why `Array(8)` works with v-for.
 
-v-for 的实现就是上面这样了，所以对于 v-for 你可以传入数组、字符串、对象 以及 整数和小数位为零的数
+**Next**, if the value is a number, v-for can also render it — but only integers (or numbers whose decimal part is 0). Otherwise, `new Array()` won’t work properly, and in development mode Vue will warn:
+`The v-for range expect an integer value but got ${source}.`
 
-所以如果你需要使用 v-for 来实现多个相同的元素的话，我认为最便捷的方法是 `v-for='_ in 8'`
+**Then**, if the value passed to v-for is an object, that also works. Vue will first check whether the object implements an iterator. If it does, it uses `Array.from` to iterate and render items. If not, it will use `Object.keys` to get the keys, then create a new array of equal length and render each item.
 
-<GiscusComments />
+So that’s how v-for is implemented. This means v-for supports arrays, strings, objects, integers, and numbers with a zero decimal part.
+
+Therefore, if you simply need to render multiple identical elements, I think the most convenient way is:
+
+```vue
+v-for="_ in 8"
+```
