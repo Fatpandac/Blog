@@ -77,5 +77,3 @@ docker run \
 之后再次运行，总算是可以正常运行了！成功生成了下列内容包括订阅文件 xml！
 
 ![Genarate files](/images/4kwzerTX3SzN.png)
-
-<GiscusComments />

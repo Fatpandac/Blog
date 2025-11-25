@@ -92,5 +92,3 @@ categories:
   content: "\e900";
 }
 ```
-
-<GiscusComments />

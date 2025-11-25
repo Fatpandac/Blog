@@ -62,5 +62,3 @@ ${KEYMAPPING} \
 | `ctrl-u` | preview 向上翻页 |
 
 大概就是这些了，希望你喜欢～
-
-<GiscusComments />

@@ -109,5 +109,3 @@ bit.raspi.local {
 这个文件是 Caddy 生成证书的根证书只要信任这个证书之后所有二级域名的签名都可以正常访问。
 
 Tailscale 的组网以同样的形式实现即可将对应的 local 域名解析到 Tailscale 对应设备的 IP 即可，Caddy 添加同样的反向代理给 Tailscale IP 的请求即可我这里则是 `100.66.0.0/24`。
-
-<GiscusComments />

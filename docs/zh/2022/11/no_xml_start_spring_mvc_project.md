@@ -162,5 +162,3 @@ public class WebConfig implements WebMvcConfigurer {
 启动 Tomcat，成功运行如下图。
 
 ![运行网页效果](/images/no_xml_start_spring_mvc_project_4.png)
-
-<GiscusComments />

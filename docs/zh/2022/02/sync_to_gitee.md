@@ -53,5 +53,3 @@ jobs:
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: ${{ github.event.repository.name }}
 ```
-
-<GiscusComments />

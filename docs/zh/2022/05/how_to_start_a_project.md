@@ -69,5 +69,3 @@ UI 界面的设计应该交由组员内审美水平较高且对实现方式有�
 ![notion 表格图](/images/iT9ZapdImAVhwR1.jpg)
 
 至此开发中的基本问题解决方案都已罗列出来，如有什么更好的建议欢迎留言 ✉️
-
-<GiscusComments />

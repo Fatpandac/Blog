@@ -141,5 +141,3 @@ if (inBrowser) {
 1. <a href="/files/chrome-vue.json" download>Chrome 第一次加载和刷新页面的 preformace 导出文件</a>
 2. <a href="/files/safari-vue.json" download>Safari 时间线的导出文件</a>
 3. <a href="/files/chrome-vue-with-onload.json" download>Chrome 使用 onload 属性的 preformace 导出文件</a>
-
-<GiscusComments />

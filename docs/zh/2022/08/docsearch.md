@@ -27,5 +27,3 @@ categories:
 </a>
 
 repo: [https://github.com/Fatpandac/DocSearch](https://github.com/Fatpandac/DocSearch)
-
-<GiscusComments />
