@@ -5,15 +5,14 @@ import { computed } from "vue";
 import { useData } from "vitepress";
 import GiscusComments from "../Atoms/GiscusComments.vue";
 const { Layout } = DefaultTheme;
+const { site, frontmatter } = useData()
 
 const siteName = computed(() => {
-    const { site } = useData()
     return site.value.title
 })
 
 const pageTitle = computed(() => {
-    const { page } = useData()
-    return page.value.title
+    return frontmatter.value.title || ''
 })
 </script>
 
@@ -23,7 +22,7 @@ const pageTitle = computed(() => {
             <NavBarTitle class="w-8 h-8" :title="siteName" />
         </template>
         <template #doc-before>
-            <H1 class="text-3xl font-bold mb-8 mt-4">{{ pageTitle }}</H1>
+            <h1 class="text-3xl font-bold mb-8 mt-4">{{ pageTitle }}</h1>
         </template>
         <template #doc-after>
             <GiscusComments class="mt-8" />

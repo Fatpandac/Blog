@@ -4,7 +4,9 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useLang } from "../../Composables/useLang";
 
+const currentLang = useLang();
 const giscusContainer = ref(null);
 
 const loadGiscus = (isDark) => {
@@ -21,7 +23,7 @@ const loadGiscus = (isDark) => {
   script.setAttribute("data-emit-metadata", "0");
   script.setAttribute("data-input-position", "bottom");
   script.setAttribute("data-theme", isDark ? "dark" : "light");
-  script.setAttribute("data-lang", "zh-CN");
+  script.setAttribute("data-lang", currentLang.value === "zh-CN" ? "zh-CN" : "en");
   script.crossOrigin = "anonymous";
 
   if (giscusContainer.value) {
