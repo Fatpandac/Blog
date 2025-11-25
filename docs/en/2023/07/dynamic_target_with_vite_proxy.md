@@ -5,11 +5,11 @@ tags:
   - Vite
   - Proxy
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Recently, while writing a third-party client [biilii](https://biilii.fatpandac.com) for [bilibili](https://bilibili.com) using [Vite](https://cn.vitejs.dev/guide/) as the build tool, I encountered a problem: the addresses of the videos obtained were not unique due to distributed storage. This meant I needed to dynamically change the proxy's target. After searching for relevant information and finding no direct solutions, I explored a method myself.
 

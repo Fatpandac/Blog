@@ -6,11 +6,11 @@ tags:
   - GitHub
   - GitHub Action
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 A few days ago, I used GitHub Actions to sync a GitHub repository to Gitee.  
 Later, I discovered that GitHub Actions can also be applied in many other scenarios.  

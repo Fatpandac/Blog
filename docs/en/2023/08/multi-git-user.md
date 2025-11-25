@@ -4,11 +4,11 @@ date: 2023-08-29
 tags:
   - git
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Recently, I had a requirement: due to work needs, the company uses GitLab, while I've always used GitHub. Also, for company repositories, I need to configure the corresponding email and name specific to the company. This means I need to separately configure the email and name for cloned company repositories. Usually, the commands below are used to achieve independent Git configurations for a single repository. However, this solution is a bit cumbersome, because every time we clone a new company project, we have to set these two commands. If you also need to set GPG, that's three commands. With many repositories, it becomes quite tedious and inconvenient.
 

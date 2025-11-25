@@ -6,11 +6,11 @@ tags:
   - pip3
   - python3
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 When using Python3 installed via `brew`, I constantly saw the annoying warning 👇🏻 below when installing libraries with `pip3` 🛑:
 ![Annoying pip3 warning on brew](/images/kupj1b65xzZSh2q.png)
@@ -36,6 +36,7 @@ After a quick glance at the suggested issue, I found the following two fix metho
     ```
 
     You only need to delete the above code from the corresponding local file. This method only suppresses ⛔️ the warning output and does not address the root cause.
+
 2.  Switch the `brew` Python version to `3.10` or above.
     Assuming you have `3.9` and `3.10` locally, other scenarios are similar:
 

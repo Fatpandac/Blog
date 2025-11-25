@@ -9,7 +9,7 @@ categories:
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 A compiler is defined in textbooks as **a program that translates or processes a program written in one programming language into an equivalent program in another language.**
 

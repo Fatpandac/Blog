@@ -6,11 +6,11 @@ tags:
   - XML
   - Java
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 This semester, I started learning the Spring framework. When I began working on Spring MVC projects, I initially used Spring Boot, but later my instructor said I couldn't use it because it wasn't what we were studying, and I wouldn't get credit if I used it for the final exam. So, I had to revert to the most basic state.
 

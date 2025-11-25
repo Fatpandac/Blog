@@ -5,11 +5,11 @@ tags:
   - GitHub
   - GitHub Action
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Recently, I've been maintaining my open-source project [fuck_cqooc](https://github.com/Fatpandac/fuck_cqooc), which is a tool for completing online courses on Chongqing University's online platform. After all, as everyone knows, often we don't have enough energy to watch these online courses, and generally, these courses are just tasks to be completed, basically equivalent to reading PPTs with not much difference in quality. Spending time on them doesn't seem very reasonable.
 

@@ -8,11 +8,11 @@ tags:
   - Python
   - RSSHub
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 A few days ago, I implemented how to automatically update forked repositories. Now it's time to consider how to synchronize the forked repository code to the deployment repository!!!
 This is where [webhooks](https://docs.github.com/en/developers/webhooks-and-events/webhooks/about-webhooks) come into play. A webhook, as the name suggests, is a hook that triggers when a corresponding action occurs in a repository. It then accesses a specified URL and sends a request.

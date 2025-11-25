@@ -5,11 +5,11 @@ tags:
   - Podsync
   - Youtube
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 When using YouTube, I subscribe to several channels. Some channels have videos that can be perfectly understood just by listening, without needing to watch. Previously, I had a premium membership for background playback, but I found its usage too low for me; I basically only watch one show a day. So, I didn't renew it after it expired. However, I still wanted to consume those shows but didn't want my phone screen to stay on, wasting unnecessary battery (not eco-friendly 🐶). This made me wonder if I could extract the audio from a video and generate a podcast feed so I could listen to the content in the background.
 

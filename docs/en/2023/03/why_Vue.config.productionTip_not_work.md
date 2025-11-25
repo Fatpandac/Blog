@@ -7,11 +7,11 @@ tags:
   - Chrome
   - Safari
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Recently encountered an issue with Vue, the code is as follows:
 
@@ -93,7 +93,7 @@ To figure out why it doesn't take effect in Chrome, we can examine their call st
 
 ![Safari situation](/images/SCR-20230324-pyjp.png)
 
-In Safari, you can see that the `Vue.config.productionTip` code is executed *before* the `setTimeout` callback. This is why configuring `Vue.config.productionTip = false` works in Safari, because Vue has not yet run the code to output the production tip before this snippet is executed.
+In Safari, you can see that the `Vue.config.productionTip` code is executed _before_ the `setTimeout` callback. This is why configuring `Vue.config.productionTip = false` works in Safari, because Vue has not yet run the code to output the production tip before this snippet is executed.
 
 **Then, let's look at Chrome's situation**:
 
@@ -117,7 +117,7 @@ Thus, the reason for this problem is that Chrome and Safari have different timin
 
 If you want `Vue.config.productionTip = false` to run correctly in Chrome, you can solve this problem by adding the `onload` attribute to the `<script>` tag.
 
-The `onload` attribute will execute after the script has finished loading. Therefore, we can set `Vue.config.productionTip = false` within the `onload` attribute. This ensures that `Vue.config.productionTip = false` is set *before* the `setTimeout` defined in the Vue.js code is executed, thus ensuring it works correctly in Chrome.
+The `onload` attribute will execute after the script has finished loading. Therefore, we can set `Vue.config.productionTip = false` within the `onload` attribute. This ensures that `Vue.config.productionTip = false` is set _before_ the `setTimeout` defined in the Vue.js code is executed, thus ensuring it works correctly in Chrome.
 
 The Chrome performance panel situation after using the `onload` attribute in the code is shown below:
 

@@ -6,15 +6,15 @@ tags:
   - Icon
   - Mini-Program
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Recently, I've been dabbling in WeChat Mini-Programs, writing ✍🏻️ a mini-program application for personal book management.
 
-In the 21st century, almost all applications have icons. Icons reduce the user's learning curve and increase operation speed. Often, human ability to read text is *slightly inferior* compared to images. Therefore, application operation buttons typically come with an approximate icon. Naturally, icons must also be used in mini-program development.
+In the 21st century, almost all applications have icons. Icons reduce the user's learning curve and increase operation speed. Often, human ability to read text is _slightly inferior_ compared to images. Therefore, application operation buttons typically come with an approximate icon. Naturally, icons must also be used in mini-program development.
 
 Starting from October 2019, Apple officially introduced Dark Mode in iOS 13, signaling that dark mode for mobile operating systems would be a major trend.
 
@@ -38,9 +38,9 @@ Steps:
 
 2.  Follow these steps:
 
-    *   Click the area pointed by arrow 1 to import the local icon files to be generated.
-    *   Click the area pointed by arrow 2 to select the icons to be generated.
-    *   Click the area pointed by arrow 3 to generate the corresponding files.
+    - Click the area pointed by arrow 1 to import the local icon files to be generated.
+    - Click the area pointed by arrow 2 to select the icons to be generated.
+    - Click the area pointed by arrow 3 to generate the corresponding files.
 
     ![image-20220413012712640](/images/ZSTq2JGlHDnO9Rk.png)
 

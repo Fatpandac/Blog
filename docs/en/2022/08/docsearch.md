@@ -4,11 +4,11 @@ date: 2022-08-02
 tags:
   - Raycast
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 ![DocSearch](/images/extension-og.png)
 

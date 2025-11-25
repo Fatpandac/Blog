@@ -8,7 +8,7 @@ categories:
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 It's hard to imagine what our world would be like today without open-source software!
 

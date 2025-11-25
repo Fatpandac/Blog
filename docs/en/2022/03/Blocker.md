@@ -9,7 +9,7 @@ categories:
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Today, I saw many inappropriate comments in issues on the React GitHub repository, which was quite frustrating 💬. Some negative content 💩 even made it overseas...
 
@@ -49,6 +49,7 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
 **The following accounts have been blocked. If anyone was blocked by mistake, please [contact me](mailto:i@fatpandac.com?subject=Blocked%20by%20mistake), and I apologize in advance 🙏🏻.**
 
 [File Link](https://gist.github.com/Fatpandac/61b82660e13b9f58d072938c93b3c947#file-blocker-txt)

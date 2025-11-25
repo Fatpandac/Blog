@@ -4,11 +4,11 @@ date: 2023-12-05
 tags:
   - Vue
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Some time ago, while writing an animation, I accidentally discovered that v-for can directly loop over `Array(8)`. That caught my attention 🤔
 

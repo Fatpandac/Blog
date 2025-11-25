@@ -5,11 +5,11 @@ tags:
   - ics
   - iCalendar
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Back in my school days, I always had a need to import my class schedule into a calendar for easier viewing. At the time, I relied on scripts to accomplish this. Now a friend has the same need, but asking them to run a script and modify code might be inconvenient. So I decided to simply build a web page to handle it!
 

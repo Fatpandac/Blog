@@ -5,11 +5,11 @@ tags:
   - Raspberry Pi
   - NAS
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Recently, I stopped using my PC and went back to tinkering with the Raspberry Pi. I bought a hard drive enclosure, connected it to the Pi, set up a Samba server to store downloaded videos, and used it with Infuse on Apple TV.  
 However, I ran into an issue: the Samba network transfer speed was quite poor—only around **10MB/s**! So I started investigating...
@@ -40,6 +40,6 @@ iperf3 -s
 iperf3 -c <Raspberry Pi IP address> -t 30 -P 4
 ```
 
-After following the steps above, I confirmed that the issue was caused by the network. I had been using Wi-Fi on the Raspberry Pi, and switching to a wired Ethernet connection fixed the problem.  
+After following the steps above, I confirmed that the issue was caused by the network. I had been using Wi-Fi on the Raspberry Pi, and switching to a wired Ethernet connection fixed the problem.
 
 A side note: Infuse doesn't seem to handle KMV very well—other formats appear to have slower reading speeds.

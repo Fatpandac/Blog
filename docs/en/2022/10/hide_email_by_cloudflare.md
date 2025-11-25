@@ -5,11 +5,11 @@ tags:
   - Raycast
   - Cloudflare
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 A long time ago, Cloudflare introduced a new feature: email forwarding. If you have a domain bound on Cloudflare, you can see an "Email" option in the management interface. Clicking it allows you to start creating email addresses using your own domain. After that, you need to bind a personal email address that can receive emails. Then, you set up a forwarding address for the email address you created with your domain, directing it to your personal email account. This way, you can use the domain-created email address to receive emails, and this feature also allows you to hide your real email account when necessary. Plus, it has a hidden benefit: it can drive traffic to your website, as the email addresses created with your domain will be in the format XXXXX@yourdomain.
 

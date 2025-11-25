@@ -9,7 +9,7 @@ categories:
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 The origin of this started with this [tweet](https://twitter.com/_nonfigurativ_/status/1727322594570027343), which showed two different browser windows open, displaying two particle spheres. Then the author brought the two particle spheres close together, and a magical phenomenon occurred: the particles in the two spheres attracted each other, forming a connection between them. This effect, breaking the fourth wall, is truly amazing.
 

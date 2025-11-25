@@ -4,11 +4,11 @@ date: 2025-11-19
 tags:
   - Raspberry Pi
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Recently, I sold my Raspberry Pi 4B. Surprisingly, the one I bought for around 300 RMB four years ago could still sell for 300 RMB, making the Raspberry Pi a decent investment! After selling it, I bought a Raspberry Pi 5, which allows me to experiment with even more projects.
 

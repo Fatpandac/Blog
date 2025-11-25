@@ -9,7 +9,7 @@ categories:
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 "Metroid Dread," which I purchased some time ago, finally arrived today :tada:! This was the Nintendo game I was most interested in among those released last year (2021).
 

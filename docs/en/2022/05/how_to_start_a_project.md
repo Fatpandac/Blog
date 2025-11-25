@@ -6,11 +6,11 @@ tags:
   - GitHub
   - Development
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 After nearly a month, the project development has finally concluded. This was my first experience developing in a team setting with a relatively standardized industrial process. During development, I encountered many problems and also solved many. These problems and their solutions will be valuable experience for future development, so I intend to share them here, hoping they can be helpful to you 🤝.
 

@@ -9,7 +9,7 @@ categories:
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 I've seen an interesting component in many places. When there's nothing underneath, this component looks like a solid-colored panel. But once something passes underneath it, the true nature of the panel is revealed — small holes appear at the corresponding positions, showing the color of the object moving behind it.
 

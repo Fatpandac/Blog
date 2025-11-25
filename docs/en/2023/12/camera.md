@@ -9,7 +9,7 @@ categories:
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 Some time ago, Raycast released their latest version [v1.63.0](https://www.raycast.com/changelog/1-63-0). One of the biggest updates in this version is that you can now directly access and view the camera inside Raycast.
 Before the camera opens, there is a shutter animation. When I saw this animation, my curiosity was immediately piqued. Fortunately, [Thomas Paul Mann](https://twitter.com/thomaspaulmann) posted a [tweet](https://twitter.com/thomaspaulmann/status/1730217666663850468) explaining roughly how it works, so I decided to try implementing it myself.

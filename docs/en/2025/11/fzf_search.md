@@ -5,11 +5,11 @@ tags:
   - fzf
   - VSCode
 categories:
-  - Tech Article
+  - Tech
 ---
 
 > [!info]
-> This article is auto translated by ChatGPT.
+> This article was auto-translated using ChatGPT.
 
 In the past few days, I needed to use VSCode for some tasks. When I was using Neovim, I got used to using **telescope** to search through code and files. After switching to VSCode, I wanted to keep that habit. So I decided to implement a similar feature inside VSCode — and that became a new VSCode extension I named **fzfSearch**!
 
