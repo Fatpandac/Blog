@@ -20,9 +20,6 @@ export default defineConfig({
   },
   themeConfig: {
     logo: '',
-    search: {
-      provider: 'local'
-    },
     siteTitle: false,
     aside: false,
     nav: [

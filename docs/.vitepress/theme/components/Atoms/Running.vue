@@ -40,7 +40,8 @@ const currentLang = useLang();
             class="mb-2 border-b last:border-b-0 list-none items-center tabular-nums flex gap-1 flex-wrap justify-start">
             <span class="text-md flex items-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px])">
                 <div class="i-solar:calendar-date-line-duotone inline-block" />
-                <span><span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].date }}</span>{{ key }}</span>
+                <span><span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].date }}</span>{{ key
+                }}</span>
             </span>
             <span class="text-md flex items-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px])">
                 <div class="i-solar:running-round-line-duotone inline-block" />
