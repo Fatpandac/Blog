@@ -39,7 +39,6 @@ const showPosts = computed(() => {
 
 const selectTag = (tag: string) => {
     const tags = new Set(selectedTags.value);
-    console.log('selectTag', tags, tag);
     if (tags.has(tag)) {
         tags.delete(tag);
     } else {
@@ -53,8 +52,6 @@ const selectTag = (tag: string) => {
     }
     router.go(url.pathname + url.search, { replace: true });
 };
-
-console.log(showPosts)
 </script>
 
 <template>
