@@ -17,7 +17,7 @@ const props = defineProps<{
 <template>
     <ul class="w-full p-0! m-0! list-none!">
         <li v-for="post in props.posts" :key="post.url" @click="router.go(post.url)"
-            class="p-2 cursor-pointer content-visibility-auto md:(flex items-center justify-center mb-4) hover:(text-blue-600 bg-blue-50 rounded dark:(bg-gray-800 text-blue-400))">
+            class="py-2 cursor-pointer content-visibility-auto md:(flex items-center justify-center mb-4)">
             <div class="flex items-center justify-center flex-1">
                 <v-p-badge :text="post.categories?.at(0) || ''" type="info"
                     class="mr-2 bg-blue-100 dark:bg-gray-700 translate-y-0" />

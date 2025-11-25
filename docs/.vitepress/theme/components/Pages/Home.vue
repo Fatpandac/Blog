@@ -32,7 +32,7 @@ const currentLang = useLang();
 
 <template>
   <div class="flex items-center justify-center flex-col gap-6 text-start">
-    <div class="w-full flex items-center justify-center flex-col gap-3 text-center md:(px-20 block gap-6) lg:(px-40)">
+    <div class="w-full flex items-center justify-center flex-col gap-3 text-center md:(block gap-6)">
       <img class="w-42 h-42 md:(float-left m-2)" :src="frontmatter.hero.avatar" />
       <h1 class="text-4xl font-bold text-left mb-2">{{ frontmatter.hero.title }}</h1>
       <p class="block leading-[1.71]! m-0! text-justify md:(text-start) whitespace-pre-line">

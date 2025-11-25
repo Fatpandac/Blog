@@ -37,26 +37,38 @@ const currentLang = useLang();
 <template>
     <ul class="w-full list-none p-0! m-0!" v-if="Object.keys(data).length">
         <li v-for="([key, entry], _) in Object.entries(data)" :key="key"
-            class="mb-2 border-b last:border-b-0 list-none items-center tabular-nums flex gap-1 flex-wrap justify-start">
-            <span class="text-md flex items-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px])">
+            class="mb-3 border-b last:border-b-0 list-none items-center tabular-nums flex gap-1 flex-wrap justify-start">
+            <span
+                class="text-md flex items-center justify-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px] justify-start)">
                 <div class="i-solar:calendar-date-line-duotone inline-block" />
-                <span><span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].date }}</span>{{ key
-                }}</span>
+                <span class="min-w-[100px] md:(min-w-[150px])">
+                    <span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].date }}</span>
+                    {{ key }}
+                </span>
             </span>
-            <span class="text-md flex items-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px])">
+            <span
+                class="text-md flex items-center justify-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px] justify-start)">
                 <div class="i-solar:running-round-line-duotone inline-block" />
-                <span><span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].distance }}</span>{{
-                    entry.distance.toFixed(2) }} km</span>
+                <span class="min-w-[100px] md:(min-w-[150px])">
+                    <span class="hidden  md:(inline-block) whitespace-pre">{{ locales[currentLang].distance }}</span>
+                    {{ entry.distance.toFixed(2) }} km
+                </span>
             </span>
-            <span class="text-md flex items-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px])">
+            <span
+                class="text-md flex items-center justify-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px] justify-start)">
                 <div class="i-solar:spedometer-low-line-duotone inline-block" />
-                <span><span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].pace }}</span>{{
-                    entry.pace.toFixed(2) }} min/km</span>
+                <span class="min-w-[100px] md:(min-w-[150px])">
+                    <span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].pace }}</span>
+                    {{ entry.pace.toFixed(2) }} min/km
+                </span>
             </span>
-            <span class="text-md flex items-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px])">
+            <span
+                class="text-md flex items-center justify-center min-w-[120px] flex-1 gap-1 md:(min-w-[160px] justify-start)">
                 <div class="i-solar:cup-paper-line-duotone inline-block" />
-                <span><span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].power }}</span>{{
-                    entry.power.toFixed(2) }} W</span>
+                <span class="min-w-[100px] md:(min-w-[150px])">
+                    <span class="hidden md:(inline-block) whitespace-pre">{{ locales[currentLang].power }}</span>
+                    {{ entry.power.toFixed(2) }} W
+                </span>
             </span>
         </li>
     </ul>
