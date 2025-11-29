@@ -22,12 +22,19 @@ import Running from "../Atoms/Running.vue";
 import Section from "../Atoms/Section.vue";
 import PostList from "../Atoms/PostList.vue";
 import { useLang } from "../../Composables/useLang";
+import MarkdownIt from "markdown-it";
 
+const markdown = new MarkdownIt();
 const router = useRouter();
 const { page } = useData();
 
 const frontmatter = computed(() => page.value?.frontmatter || {});
 const currentLang = useLang();
+
+const htmlBio = computed(() => {
+  const desc = frontmatter.value.hero?.bio || '';
+  return markdown.render(desc);
+});
 </script>
 
 <template>
@@ -35,9 +42,9 @@ const currentLang = useLang();
     <div class="w-full flex items-center justify-center flex-col gap-3 text-center md:(block gap-6)">
       <img class="w-42 h-42 md:(float-left m-2)" :src="frontmatter.hero.avatar" />
       <h1 class="text-4xl font-bold text-left mb-2">{{ frontmatter.hero.title }}</h1>
-      <p class="block leading-[1.71]! m-0! text-justify md:(text-start) whitespace-pre-line">
-        {{ frontmatter.hero.bio }}
-      </p>
+      <div class="block leading-[1.71]! m-0! text-justify md:(text-start) whitespace-pre-line bio"
+        v-html="htmlBio">
+      </div>
     </div>
     <Section>
       <template #title>
@@ -53,7 +60,8 @@ const currentLang = useLang();
           <div class="text-2xl font-bold text-start">
             {{ locales[currentLang]?.latestPosts }}
           </div>
-          <div class="flex items-center mb-2 cursor-pointer text-blue-600" @click="router.go(currentLang === 'zh-CN' ? '/posts' : '/en/posts')">
+          <div class="flex items-center mb-2 cursor-pointer text-blue-600"
+            @click="router.go(currentLang === 'zh-CN' ? '/posts' : '/en/posts')">
             {{ locales[currentLang]?.viewAllPosts }}
             <div class="i-solar:alt-arrow-right-line-duotone inline-block ml-1" />
           </div>
@@ -65,6 +73,12 @@ const currentLang = useLang();
     </Section>
   </div>
 </template>
+
+<style scoped>
+.bio :global(p) {
+  margin: 0 !important;
+}
+</style>
 
 <style>
 .VPHome {
