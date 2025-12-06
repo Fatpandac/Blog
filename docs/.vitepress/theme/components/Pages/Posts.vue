@@ -23,8 +23,9 @@ import { computed, ref } from 'vue';
 import Section from '../Atoms/Section.vue';
 import PostList from '../Atoms/PostList.vue';
 import { useLang } from '../../Composables/useLang';
-import { useRoute, useRouter } from 'vitepress';
-import ForceGraph from '../Atoms/ForceGraph.vue';
+import { defineClientComponent, useRoute, useRouter } from 'vitepress';
+
+const ForceGraphClientOnly = defineClientComponent(() => import('../Atoms/ForceGraph.vue'));
 
 const route = useRoute();
 const router = useRouter();
@@ -101,6 +102,6 @@ const selectTag = (tag: string) => {
         </Section>
     </template>
     <template v-else>
-        <ForceGraph :data="posts[currentLang]" />
+        <ForceGraphClientOnly :data="posts[currentLang]" />
     </template>
 </template>
