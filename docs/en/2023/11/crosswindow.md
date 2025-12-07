@@ -5,7 +5,7 @@ tags:
   - Vue
   - Browser API
 categories:
-  - Other
+  - Demo
 ---
 
 > [!info]

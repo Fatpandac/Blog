@@ -29,7 +29,7 @@ const ForceGraphClientOnly = defineClientComponent(() => import('../Atoms/ForceG
 
 const route = useRoute();
 const router = useRouter();
-const showGraph = ref(false);
+const showGraph = ref(new URLSearchParams(window.location.search).get('show') === 'graph');
 const currentLang = useLang();
 const selectedTags = computed(() => {
     const urlParams = new URLSearchParams(route.query);
@@ -59,10 +59,21 @@ const selectTag = (tag: string) => {
     }
     router.go(url.pathname + url.search, { replace: true });
 };
+
+function toggleGraph() {
+    showGraph.value = !showGraph.value;
+    const url = new URL(window.location.href);
+    if (showGraph.value) {
+        url.searchParams.set('show', 'graph');
+    } else {
+        url.searchParams.delete('show');
+    }
+    router.go(url.pathname + url.search, { replace: true });
+}
 </script>
 
 <template>
-    <button @click="showGraph = !showGraph"
+    <button @click="toggleGraph"
         class="absolute top-0 right-0 z-10 px-2 py-1 flex items-center gap-1 bg-[rgba(142,150,170,0.14)] dark:bg-gray-700  rounded-md hover:(bg-blue-200 dark:bg-gray-600)">
         <template v-if="!showGraph">
             {{ locales[currentLang]?.toggleGraph }}
