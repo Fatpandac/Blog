@@ -32,6 +32,7 @@ const UNITS = {
 <script setup lang="ts">
 import { defineComponent, h, onMounted, ref } from 'vue';
 import { useLang } from '../../Composables/useLang';
+import dayjs from 'dayjs';
 const DataURL = import.meta.env.DEV ? '/api/running' : 'https://hidden-mud-7c6e.tingfeizheng.workers.dev/running';
 type RunningData = {
     distance: number;
@@ -39,10 +40,19 @@ type RunningData = {
     power: number;
 };
 
-const data = ref<Record<string, RunningData>>({});
+const sortedData = ref<{
+    order: string[];
+    data: Record<string, RunningData>;
+}>({
+    order: [],
+    data: {}
+});
 onMounted(async () => {
     const values = await fetch(DataURL).then(res => res.json());
-    data.value = values.data;
+    sortedData.value = {
+        order: Object.keys(values.data).sort((a, b) => Number(b) -  Number(a)),
+        data: values.data
+    };
 })
 
 const CreateStatSpan = defineComponent({
@@ -67,7 +77,7 @@ const CreateStatSpan = defineComponent({
             h('div', { class: `${ICON_MAP[type]} inline-block mr-1 md:(mr-2)` }),
             h('span', {}, [
                 h('span', { class: 'hidden md:(inline-block) whitespace-pre' }, `${locales[currentLang.value][type]}`),
-                h('span', { class: 'font-mono tabular-nums' }, `${typeof value[type] === 'number' ? value[type].toFixed(2) : value[type]}${UNITS[type]}`)
+                h('span', { class: 'font-mono tabular-nums' }, `${typeof value[type] === 'number' ? value[type].toFixed(2) : dayjs(Number(value[type]) * 1000).format('YYYY-MM-DD')}${UNITS[type]}`)
             ])
         ])
     },
@@ -76,13 +86,13 @@ const CreateStatSpan = defineComponent({
 </script>
 
 <template>
-    <ul class="w-full list-none p-0! m-0!" v-if="Object.keys(data).length">
-        <li v-for="([key, entry], _) in Object.entries(data)" :key="key"
+    <ul class="w-full list-none p-0! m-0!" v-if="sortedData.order.length">
+        <li v-for="key in sortedData.order" :key="key"
             class="mb-3 border-b last:border-b-0 list-none items-center flex gap-1 flex-wrap justify-start">
-            <create-stat-span type="date" :value="{ ...entry, date: key }" />
-            <create-stat-span type="distance" :value="{ ...entry, date: key }" />
-            <create-stat-span type="pace" :value="{ ...entry, date: key }" />
-            <create-stat-span type="power" :value="{ ...entry, date: key }" />
+            <create-stat-span type="date" :value="{ ...sortedData.data[key], date: key }" />
+            <create-stat-span type="distance" :value="{ ...sortedData.data[key], date: key }" />
+            <create-stat-span type="pace" :value="{ ...sortedData.data[key], date: key }" />
+            <create-stat-span type="power" :value="{ ...sortedData.data[key], date: key }" />
         </li>
     </ul>
     <div v-else class="w-full flex items-center justify-center py-10 text-gray-500">
