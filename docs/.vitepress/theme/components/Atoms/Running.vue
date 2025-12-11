@@ -4,13 +4,13 @@ const locales = {
         date: '日期：',
         distance: '距离：',
         pace: '配速：',
-        power: '功率：',
+        heartrate: '心率：',
     },
     'en-US': {
         date: 'Date: ',
         distance: 'Distance: ',
         pace: 'Pace: ',
-        power: 'Power: ',
+        heartrate: 'Heartrate: ',
     }
 } as const;
 
@@ -18,13 +18,13 @@ const ICON_MAP = {
     date: 'i-solar:calendar-date-line-duotone',
     distance: 'i-solar:running-round-line-duotone',
     pace: 'i-solar:spedometer-low-line-duotone',
-    power: 'i-solar:cup-paper-line-duotone',
+    heartrate: 'i-solar:hearts-line-duotone',
 } as const;
 
 const UNITS = {
     distance: ' km',
     pace: ' min/km',
-    power: ' W',
+    heartrate: ' bpm',
     date: '',
 } as const;
 </script>
@@ -37,7 +37,7 @@ const DataURL = import.meta.env.DEV ? '/api/running' : 'https://hidden-mud-7c6e.
 type RunningData = {
     distance: number;
     pace: number;
-    power: number;
+    heartrate: number;
 };
 
 const sortedData = ref<{
@@ -77,7 +77,7 @@ const CreateStatSpan = defineComponent({
             h('div', { class: `${ICON_MAP[type]} inline-block mr-1 md:(mr-2)` }),
             h('span', {}, [
                 h('span', { class: 'hidden md:(inline-block) whitespace-pre' }, `${locales[currentLang.value][type]}`),
-                h('span', { class: 'font-mono tabular-nums' }, `${typeof value[type] === 'number' ? value[type].toFixed(2) : dayjs(Number(value[type]) * 1000).format('YYYY-MM-DD')}${UNITS[type]}`)
+                h('span', { class: 'font-mono tabular-nums' }, `${type !== 'date' ? value[type] : dayjs(Number(value[type]) * 1000).format('YYYY-MM-DD')}${UNITS[type]}`)
             ])
         ])
     },
@@ -92,7 +92,7 @@ const CreateStatSpan = defineComponent({
             <create-stat-span type="date" :value="{ ...sortedData.data[key], date: key }" />
             <create-stat-span type="distance" :value="{ ...sortedData.data[key], date: key }" />
             <create-stat-span type="pace" :value="{ ...sortedData.data[key], date: key }" />
-            <create-stat-span type="power" :value="{ ...sortedData.data[key], date: key }" />
+            <create-stat-span type="heartrate" :value="{ ...sortedData.data[key], date: key }" />
         </li>
     </ul>
     <div v-else class="w-full flex items-center justify-center py-10 text-gray-500">
