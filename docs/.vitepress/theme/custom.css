@@ -1,3 +1,7 @@
 html {
   scrollbar-gutter: stable both-edges;
 }
+
+html[lang=zh-CN]  div.content-container p{
+  text-indent: 2em;
+}

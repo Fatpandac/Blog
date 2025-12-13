@@ -62,4 +62,14 @@ Finally, the extension provides the following shortcuts for quick searching:
 | `ctrl-d` | Scroll preview down                                              |
 | `ctrl-u` | Scroll preview up                                                |
 
+Additional suggestion: Using it with VSCode Neovim will make the experience even smoother~
+
+Configuration as follows:
+
+```vim
+nnoremap <silent> <leader>ff :<C-u>call VSCodeNotify('fzfsearch.search.file.toggle')<CR>
+nnoremap <silent> <leader>fw :<C-u>call VSCodeNotify('fzfsearch.search.content.toggle')<CR>
+nnoremap <silent> <leader>fg :<C-u>call VSCodeNotify('fzfsearch.search.repo.toggle')<CR>
+```
+
 That's pretty much it — hope you like it!

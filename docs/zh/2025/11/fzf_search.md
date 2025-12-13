@@ -61,4 +61,14 @@ ${KEYMAPPING} \
 | `ctrl-d` | preview 向下翻页 |
 | `ctrl-u` | preview 向上翻页 |
 
+额外建议配合 [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) 使用会更加流畅～
+
+配置如下：
+
+```vim
+nnoremap <silent> <leader>ff :<C-u>call VSCodeNotify('fzfsearch.search.file.toggle')<CR>
+nnoremap <silent> <leader>fw :<C-u>call VSCodeNotify('fzfsearch.search.content.toggle')<CR>
+nnoremap <silent> <leader>fg :<C-u>call VSCodeNotify('fzfsearch.search.repo.toggle')<CR>
+```
+
 大概就是这些了，希望你喜欢～
