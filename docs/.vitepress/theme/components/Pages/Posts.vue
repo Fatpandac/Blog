@@ -29,7 +29,7 @@ const ForceGraphClientOnly = defineClientComponent(() => import('../Atoms/ForceG
 
 const route = useRoute();
 const router = useRouter();
-const showGraph = ref(new URLSearchParams(window.location.search).get('show') === 'graph');
+const showGraph = ref(new URLSearchParams(route.query).get('show') === 'graph');
 const currentLang = useLang();
 const selectedTags = computed(() => {
     const urlParams = new URLSearchParams(route.query);
