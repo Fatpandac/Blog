@@ -68,15 +68,18 @@ const htmlBio = computed(() => {
         </div>
       </template>
       <template #content>
-        <PostList :posts="posts[currentLang]?.slice(0, 10)" />
+        <PostList :posts="posts[currentLang]?.slice(0, 10)" :show-description="true" />
       </template>
     </Section>
   </div>
 </template>
 
 <style scoped>
-.bio :global(p) {
-  margin: 0 !important;
+.bio {
+  :global(p) {
+    margin: 0 !important;
+    text-indent: 2em;
+  }
 }
 </style>
 

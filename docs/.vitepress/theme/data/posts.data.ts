@@ -13,13 +13,17 @@ declare const data: Record<string, Post[]>
 export { data }
 
 export default createContentLoader('./**/*.md', {
-    excerpt: true,
+    excerpt: "<!-- more -->",
     transform(posts) {
         return posts
             .map(post => ({
                 title: post.frontmatter.title,
                 date: post.frontmatter.date,
-                description: post.frontmatter.description || post.excerpt,
+                // remove image and info custom-block
+                description: (post.frontmatter.description || post.excerpt)
+                .replace(/<img[^>]*>/g, '')
+                .replace(/<div\s+class=["']info\s+custom-block\s+.[^>]*["'][^>]*>[\s\S]*?<\/div>/g, '')
+                .trim(),
                 categories: post.frontmatter.categories,
                 tags: post.frontmatter.tags,
                 url: post.url.replace('/zh', '')
