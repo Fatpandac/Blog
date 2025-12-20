@@ -3,5 +3,7 @@ yarn.lock
 yarn.error
 .DS_Store
 .env.*
+cache
+dist
 
 public/**

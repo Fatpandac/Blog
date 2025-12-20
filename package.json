@@ -3,31 +3,32 @@
   "version": "1.0.0",
   "author": "Fatpandac",
   "scripts": {
-    "dev": "vuepress dev . ",
-    "build": "vuepress build . && node scripts/addHeaders.js",
-    "prettier": "prettier --write ./docs/**/**/*.md ./.vuepress/**.js"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "prettier": "prettier --write ./docs/**/**/*.md"
   },
   "description": "My blog",
   "devDependencies": {
+    "@iconify-json/solar": "^1.2.5",
+    "@unocss/preset-icons": "^66.5.9",
+    "@unocss/transformer-variant-group": "^66.5.9",
     "dotenv": "^16.0.3",
-    "vuepress": "^1.9.9",
-    "vuepress-plugin-clean-urls": "^1.1.2",
-    "vuepress-plugin-code-copy": "^1.0.6",
-    "vuepress-plugin-permalink-pinyin": "^1.0.0",
-    "vuepress-theme-reco": "^1.6.17",
+    "unocss": "^66.5.9",
+    "vitepress": "2.0.0-alpha.15",
+    "vue": "^3.5.24",
     "yorkie": "^2.0.0"
   },
-  "dependencies": {
-    "@vuepress/plugin-last-updated": "^1.9.7",
-    "moment": "^2.29.1",
-    "vuepress-plugin-reading-progress": "^1.0.10",
-    "vuepress-plugin-sitemap": "^2.3.1"
-  },
   "gitHooks": {
-    "pre-commit": "node scripts/addComments.js && npm run prettier"
+    "pre-commit": "npm run prettier"
   },
   "engines": {
-    "node": "16",
-    "npm": ">=8.0.0"
+    "node": "22"
+  },
+  "dependencies": {
+    "d3-force": "^3.0.0",
+    "dayjs": "^1.11.19",
+    "force-graph": "^1.51.0",
+    "markdown-it": "^14.1.0"
   }
 }
