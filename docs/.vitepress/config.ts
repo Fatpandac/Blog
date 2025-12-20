@@ -45,6 +45,7 @@ export default defineConfig({
     hostname: 'https://fatpandac.com',
   },
   rewrites: {
-    'zh/:rest*': ':rest*'
+    'zh/index.md': 'index.md',
+    'zh/:path+': 'docs/:path+',
   },
 })

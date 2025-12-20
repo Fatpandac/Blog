@@ -26,7 +26,7 @@ export default createContentLoader('./**/*.md', {
                 .trim(),
                 categories: post.frontmatter.categories,
                 tags: post.frontmatter.tags,
-                url: post.url.replace('/zh', '')
+                url: post.url.replace('/zh', '/docs')
             }))
             .reduce((acc, post) => {
                 const lang = post.url.startsWith('/en/') ? 'en-US' : 'zh-CN'
