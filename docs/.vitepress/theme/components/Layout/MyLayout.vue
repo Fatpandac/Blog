@@ -4,8 +4,11 @@ import NavBarTitle from "../Atoms/NavBarTitle.vue";
 import { computed } from "vue";
 import { useData } from "vitepress";
 import GiscusComments from "../Atoms/GiscusComments.vue";
+import { inject } from "@vercel/analytics"
 const { Layout } = DefaultTheme;
 const { site, frontmatter } = useData()
+
+inject();
 
 const siteName = computed(() => {
     return site.value.title
