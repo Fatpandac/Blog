@@ -19,7 +19,7 @@ const props = defineProps<{
 <template>
     <ul class="w-full p-0! m-0! list-none!">
         <li v-for="post in props.posts" :key="post.url" @click="router.go(post.url)"
-            :class="`py-2 cursor-pointer content-visibility-auto md:(flex justify-center mb-4) md:${props.showDescription ? 'items-end' : 'items-center'} `">
+            :class="`py-2 cursor-pointer content-visibility-auto md:(flex justify-center mb-4) ${props.showDescription ? 'md:items-end' : 'md:items-center'} `">
             <div class="flex items-center justify-start flex-1 flex-col md:(mr-4)">
                 <div class="flex items-center justify-center w-full">
                     <v-p-badge :text="post.categories?.at(0) || ''" type="info"

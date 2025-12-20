@@ -2,6 +2,11 @@ html {
   scrollbar-gutter: stable both-edges;
 }
 
-html[lang=zh-CN]  div.content-container p{
-  text-indent: 2em;
+html[lang=zh-CN]  div.content-container {
+  p {
+    text-indent: 2em;
+  }
+  p:has(+ ol) {
+    text-indent: 0;
+  }
 }

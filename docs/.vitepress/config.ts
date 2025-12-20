@@ -44,8 +44,8 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://fatpandac.com',
   },
+  cleanUrls: true,
   rewrites: {
-    'zh/index.md': 'index.md',
-    'zh/:path+': 'docs/:path+',
+    'zh/:path+': ':path+',
   },
 })
