@@ -27,6 +27,37 @@ export default defineConfig({
   },
   head: [
     ['link', { rel: 'icon', href: '/favicon.png' }],
+    [
+      "script",
+      {
+        async: "",
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9193612170661714",
+        crossorigin: "anonymous",
+      },
+    ],
+    [
+      "meta",
+      { name: "google-adsense-account", content: "ca-pub-9193612170661714" },
+    ],
+    ["link", { rel: "icon", href: "/favicon.png" }],
+    [
+      "script",
+      {
+        async: "",
+        src: "https://www.googletagmanager.com/gtag/js?id=G-10D6YDNQ9J",
+      },
+    ],
+    [
+      "script",
+      {},
+      `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-10D6YDNQ9J');
+            `,
+    ],
   ],
   vite: {
     plugins: [
