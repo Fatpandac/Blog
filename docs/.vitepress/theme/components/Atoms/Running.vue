@@ -77,7 +77,7 @@ const CreateStatSpan = defineComponent({
             h('div', { class: `${ICON_MAP[type]} inline-block mr-1 md:(mr-2)` }),
             h('span', {}, [
                 h('span', { class: 'hidden md:(inline-block) whitespace-pre' }, `${locales[currentLang.value][type]}`),
-                h('span', { class: 'font-mono tabular-nums' }, `${type !== 'date' ? value[type] : dayjs(Number(value[type]) * 1000).format('YYYY-MM-DD')}${UNITS[type]}`)
+                h('span', { class: 'font-mono tabular-nums' }, `${type !== 'date' ? Number(value[type]).toFixed(2) : dayjs(Number(value[type]) * 1000).format('YYYY-MM-DD')}${UNITS[type]}`)
             ])
         ])
     },
