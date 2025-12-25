@@ -2,6 +2,26 @@ import { defineConfig } from 'vitepress'
 import UnoCSS from 'unocss/vite'
 
 export default defineConfig({
+  transformHead(ctx) {
+    const {
+      pageData: {
+        frontmatter: {
+          author = 'Fatpandac',
+          title,
+          date
+        }
+      }
+    } = ctx
+
+    const imgUrl = `https://ogimg.fatpandac.com/?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}&date=${date ? date.split('T')[0] : ''}`
+
+    return title ? [
+      ['meta', {
+        property: 'og:image',
+        content: imgUrl
+      }]
+    ] : []
+  },
   title: "Fatpandac's blog",
   lastUpdated: true,
   lang: 'zh-CN',
@@ -27,6 +47,7 @@ export default defineConfig({
   },
   head: [
     ['link', { rel: 'icon', href: '/favicon.png' }],
+    ['meta', { property: 'og:site_name', content: "Fatpandac's blog" }],
     [
       "script",
       {
