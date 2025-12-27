@@ -93,7 +93,7 @@ function toggleGraph() {
             </template>
             <template #content>
                 <div class="flex flex-wrap gap-2 mb-6 justify-start">
-                    <v-p-badge v-for="tag in Array.from(new Set(posts[currentLang].flatMap(post => post.tags)))"
+                    <VPBadge v-for="tag in Array.from(new Set(posts[currentLang].flatMap(post => post.tags)))"
                         :key="tag" :text="tag" type="info"
                         class=" dark:bg-gray-700 translate-y-0 cursor-pointer hover:(bg-blue-200 dark:bg-gray-600)"
                         :class="selectedTags.includes(tag) ? 'text-white! bg-blue-600! dark:bg-blue-500!' : ''"
