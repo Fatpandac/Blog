@@ -1,6 +1,27 @@
 import { defineConfig } from 'vitepress'
 import UnoCSS from 'unocss/vite'
 
+function buildMeta() {
+  const metaArr: Array<[string, { property: string, content: string }]> = []
+
+  function insert(property: string, content: string) {
+    metaArr.push([
+      'meta',
+      { property, content }
+    ])
+  }
+
+  function build() {
+    return metaArr
+  }
+
+  return {
+    insert,
+    build
+  }
+}
+
+
 export default defineConfig({
   transformHead(ctx) {
     const {
@@ -8,19 +29,27 @@ export default defineConfig({
         frontmatter: {
           author = 'Fatpandac',
           title,
-          date
+          date,
+          tags = []
         }
       }
     } = ctx
-
+    if (!title) return []
+    
     const imgUrl = `https://ogimg.fatpandac.com/?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}&date=${date ? date.split('T')[0] : ''}`
 
-    return title ? [
-      ['meta', {
-        property: 'og:image',
-        content: imgUrl
-      }]
-    ] : []
+    const metaBuilder = buildMeta()
+    metaBuilder.insert('keywords', tags.join(', '))
+    metaBuilder.insert('og:image', imgUrl)
+    metaBuilder.insert('og:author', author)
+    metaBuilder.insert('og:title', title)
+    metaBuilder.insert('twitter:image', imgUrl)
+    metaBuilder.insert('twitter:author', author)
+    metaBuilder.insert('twitter:title', title)
+
+    return [
+      ...metaBuilder.build()
+    ]
   },
   title: "Fatpandac's blog",
   lastUpdated: true,
@@ -48,6 +77,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/favicon.png' }],
     ['meta', { property: 'og:site_name', content: "Fatpandac's blog" }],
+    ['meta', { name: 'author', content: 'Fatpandac' }],
     [
       "script",
       {
@@ -91,6 +121,9 @@ export default defineConfig({
           changeOrigin: true,
         }
       }
+    },
+    build: {
+      minify: 'terser',
     }
   },
   sitemap: {
