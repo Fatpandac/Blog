@@ -52,6 +52,7 @@ export default defineConfig({
     ]
   },
   title: "Fatpandac's blog",
+  description: "Fatpandac's blog",
   lastUpdated: true,
   lang: 'zh-CN',
   outDir: '../public',
