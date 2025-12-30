@@ -2,7 +2,7 @@
 title: 树莓派 samba 传输速度慢排查
 date: 2025-09-20
 tags:
-  - Rasberry Pi
+  - Raspberry Pi
   - NAS
 categories:
   - 技文

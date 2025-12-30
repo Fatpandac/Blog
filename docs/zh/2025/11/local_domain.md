@@ -2,7 +2,7 @@
 title: 使用 local 域名管理自己的本地服务
 date: 2025-11-19
 tags:
-  - Rasberry Pi
+  - Raspberry Pi
 categories:
   - 技文
 ---

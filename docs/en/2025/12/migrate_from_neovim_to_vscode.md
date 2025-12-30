@@ -5,7 +5,7 @@ tags:
   - Neovim
   - VSCode
 categories:
-  - Miscellaneous
+  - Other
 ---
 
 > [!info]
