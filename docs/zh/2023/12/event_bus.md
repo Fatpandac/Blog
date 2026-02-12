@@ -69,5 +69,5 @@ function close() {
 
 这样就实现了一个简易的 EventBus 了
 
-查看[源码](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/eventBus)，体验 <a href="/demo/eventBus.html">Demo</a>
+查看[源码](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/eventBus)，体验 <a href="/demo/eventBus.html" target="_blank">Demo</a>
 ![演示视频 GIF](/images/eventBus.gif)

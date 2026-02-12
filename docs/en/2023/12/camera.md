@@ -166,5 +166,5 @@ onMounted(() => {
 
 And with that, you can recreate the camera shutter animation!
 
-Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/camera), and try the <a href="/demo/camera.html">Demo</a>.
+Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/camera), and try the <a href="/demo/camera.html" target="_blank">Demo</a>.
 ![Demo GIF](/images/camera.gif)

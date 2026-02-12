@@ -74,5 +74,5 @@ function close() {
 
 With this, we've implemented a lightweight EventBus.
 
-Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/eventBus), and try the <a href="/demo/eventBus.html">Demo</a>.
+Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/eventBus), and try the <a href="/demo/eventBus.html" target="_blank">Demo</a>.
 ![Demo GIF](/images/eventBus.gif)

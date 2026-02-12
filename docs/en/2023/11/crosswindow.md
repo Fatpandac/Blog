@@ -97,5 +97,5 @@ bc.onmessage = (ev) => {
 
 Up to this point, we have achieved cross-window dragging of a Div. For a more realistic effect, you can use [window.getScreenDetails()](https://developer.mozilla.org/en-US/docs/Web/API/Window/getScreenDetails) to get the size of the current display and calculate whether the windows are adjacent or overlapping.
 
-Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/crosswindow), and experience the <a href="/demo/crosswindow.html">Demo</a>
+Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/crosswindow), and experience the <a href="/demo/crosswindow.html" target="_blank">Demo</a>
 ![GIF](/images/crosswindow.gif)

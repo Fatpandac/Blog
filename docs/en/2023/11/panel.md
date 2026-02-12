@@ -71,5 +71,5 @@ watch([x, y], (newValue) => {
 </style>
 ```
 
-Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/panel), and try the <a href="/demo/panel.html">demo</a>.
+Check out the [source code](https://github.com/Fatpandac/DemoPlayground/tree/main/packages/panel), and try the <a href="/demo/panel.html" target="_blank">demo</a>.
 ![Demo GIF](/images/panel.gif)
