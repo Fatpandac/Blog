@@ -19,6 +19,7 @@ export default async function handler(req, res) {
 
     const kvNamespaceId = process.env.KV_NAME;
     const cfToken = process.env.TOKEN;
+    const account = process.env.ACCOUNT
 
     if (!kvNamespaceId || !cfToken) {
       console.error('Missing Cloudflare KV credentials');
@@ -29,7 +30,7 @@ export default async function handler(req, res) {
     const key = `404:${Date.now()}:${Math.random().toString(36).substring(2, 9)}`;
 
     // 调用 Cloudflare API 写入 KV
-    const cfApiUrl = `https://api.cloudflare.com/client/v4/namespaces/${kvNamespaceId}/values/${encodeURIComponent(key)}`;
+    const cfApiUrl = `https://api.cloudflare.com/client/v4/accounts/${account}/storage/kv/namespaces/${kvNamespaceId}/values/${encodeURIComponent(key)}`;
 
     const response = await fetch(cfApiUrl, {
       method: 'PUT',
