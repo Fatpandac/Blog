@@ -12,13 +12,14 @@ const locales = {
 <script setup lang="ts">
 import DefaultTheme, { VPBadge } from "vitepress/theme";
 import NavBarTitle from "../Atoms/NavBarTitle.vue";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useData, useRouter } from "vitepress";
 import GiscusComments from "../Atoms/GiscusComments.vue";
 import { inject } from "@vercel/analytics"
 import { useLang } from "../../Composables/useLang";
+import { report404 } from "../../utils/report404";
 const { Layout } = DefaultTheme;
-const { site, frontmatter } = useData()
+const { site, frontmatter, page } = useData()
 inject();
 
 const router = useRouter();
@@ -32,6 +33,13 @@ function gotoTags(tag: string) {
     const url = `/posts?tags=${encodeURIComponent(tag)}`
     router.go(url)
 }
+
+onMounted(() => {
+  // 检测是否为 404 页面（VitePress 的 NotFound 页面）
+  if (page.value.isNotFound) {
+    report404(window.location.href);
+  }
+})
 </script>
 
 <template>
