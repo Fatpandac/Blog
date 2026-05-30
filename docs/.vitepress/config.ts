@@ -115,14 +115,6 @@ export default defineConfig({
     plugins: [
       UnoCSS()
     ],
-    server: {
-      proxy: {
-        '/api': {
-          target: 'https://hidden-mud-7c6e.tingfeizheng.workers.dev',
-          changeOrigin: true,
-        }
-      }
-    },
     build: {
       minify: 'terser',
     }

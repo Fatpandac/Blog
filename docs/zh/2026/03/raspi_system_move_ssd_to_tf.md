@@ -35,6 +35,7 @@ sudo mount /dev/mmcblk0p2 /mnt/tfroot
 完成挂载之后就可以开始迁移 SSD 盘的数据了，这里使用 `rsync` 来复制数据因为这样复制的只是使用了的数据，不会像 `dd` 一样按照 SSD 实际空间大小复制。
 
 首先复制 boot 的内容使用命令如下：
+
 ```bash
 sudo rsync -axHAWXS --numeric-ids --info=progress2 \
 / /mnt/tfroot \
@@ -42,11 +43,13 @@ sudo rsync -axHAWXS --numeric-ids --info=progress2 \
 ```
 
 之后再使用下面命令复制 root 的内容：
+
 ```bash
 sudo rsync -ax /boot/ /mnt/tfboot/
 ```
 
 紧接着修改配置，把原有的启动盘地址进行修改，使用 `sudo blkid` 记录 `/dev/mmcblk0p2` 的 UUID 和 PARTUUID，然后修改 `/mnt/tfboot/cmdline.txt` 文件里面的 UUID 和 PARTUUID 紧接着修改 `/mnt/tfroot/etc/fstab` 确保类似下面：
+
 ```
 UUID=xxxx  /      ext4  defaults,noatime  0 1
 UUID=xxxx  /boot  vfat  defaults          0 2

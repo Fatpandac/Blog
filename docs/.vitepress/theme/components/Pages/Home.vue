@@ -3,12 +3,10 @@ const locales = {
   'zh-CN': {
     latestPosts: '最新文章',
     viewAllPosts: '查看所有文章',
-    runningStats: '最近跑步数据',
   },
   'en-US': {
     latestPosts: 'Latest Posts',
     viewAllPosts: 'View All Posts',
-    runningStats: 'Recent Running Stats',
   }
 } as const;
 </script>
@@ -18,7 +16,6 @@ import { useData, useRouter } from "vitepress";
 import 'dayjs/locale/zh-cn';
 import { data as posts } from '../../data/posts.data';
 import { computed } from "vue";
-import Running from "../Atoms/Running.vue";
 import Section from "../Atoms/Section.vue";
 import PostList from "../Atoms/PostList.vue";
 import { useLang } from "../../Composables/useLang";
@@ -45,14 +42,6 @@ const htmlBio = computed(() => {
       <div class="block leading-[1.71]! m-0! text-justify md:(text-start) whitespace-pre-line bio" v-html="htmlBio">
       </div>
     </div>
-    <Section>
-      <template #title>
-        <div class="text-2xl font-bold text-start mb-2">{{ locales[currentLang]?.runningStats }}</div>
-      </template>
-      <template #content>
-        <Running />
-      </template>
-    </Section>
     <Section>
       <template #title>
         <div class="flex items-baseline justify-between w-full">

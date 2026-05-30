@@ -38,6 +38,7 @@ sudo mount /dev/mmcblk0p2 /mnt/tfroot
 Once mounted, you can start copying data from the SSD. Here we use `rsync` because it only copies used data, unlike `dd`, which copies the entire disk size.
 
 First, copy the boot contents using:
+
 ```bash
 sudo rsync -axHAWXS --numeric-ids --info=progress2 \
 / /mnt/tfroot \
@@ -45,11 +46,13 @@ sudo rsync -axHAWXS --numeric-ids --info=progress2 \
 ```
 
 Then copy the root contents:
+
 ```bash
 sudo rsync -ax /boot/ /mnt/tfboot/
 ```
 
 Next, update the configuration. Use `sudo blkid` to get the UUID and PARTUUID of `/dev/mmcblk0p2`. Then edit `/mnt/tfboot/cmdline.txt` to update the UUID and PARTUUID accordingly. After that, modify `/mnt/tfroot/etc/fstab` to look like this:
+
 ```
 UUID=xxxx  /      ext4  defaults,noatime  0 1
 UUID=xxxx  /boot  vfat  defaults          0 2
