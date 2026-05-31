@@ -117,7 +117,7 @@ export default defineConfig({
     ],
     build: {
       minify: 'terser',
-    }
+    },
   },
   sitemap: {
     hostname: 'https://fatpandac.com',
