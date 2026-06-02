@@ -18,6 +18,8 @@ import NeuralNetDiagram from '../../../.vitepress/theme/components/Atoms/NeuralN
 
 In my daily typing, I often use Emoji to express my emotions or certain meanings. However, I find that current input methods are not very convenient or smart when it comes to recommending Emoji. So I wanted to build a **model** that recommends appropriate Emoji based on the text I type, making it easier to express myself with Emoji.
 
+<!-- more -->
+
 After some research, I initially considered using traditional machine learning methods to implement this, but that would involve a lot of work and might not yield great results. I continued researching and eventually found that I could fine-tune the pre-trained MiniLM model, leveraging the language knowledge it has already learned to better understand my input text and recommend more appropriate Emoji.
 
 I chose [Multilingual-MiniLM-L12-H384](https://huggingface.co/microsoft/Multilingual-MiniLM-L12-H384) from Hugging Face as my base model, because it has already been trained on multilingual text and has a good understanding of text in different languages, making it well-suited for the various languages I type. I used the training data from [vincentclaes/emoji-predictor](https://huggingface.co/datasets/vincentclaes/emoji-predictor) for fine-tuning. This dataset contains a large amount of text with corresponding Emoji labels, allowing the model to learn how to predict appropriate Emoji from text. Since this dataset is in English, I also needed to preprocess the data to support multilingual input.
