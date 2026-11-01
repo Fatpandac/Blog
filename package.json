@@ -14,6 +14,8 @@
     "@unocss/preset-icons": "^66.5.9",
     "@unocss/transformer-variant-group": "^66.5.9",
     "dotenv": "^16.0.3",
+    "lint-staged": "^16.4.0",
+    "prettier": "3.0.2",
     "terser": "^5.44.1",
     "unocss": "^66.5.9",
     "vitepress": "2.0.0-alpha.15",
@@ -21,7 +23,10 @@
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
-    "pre-commit": "npm run prettier"
+    "pre-commit": "npx --no-install lint-staged"
+  },
+  "lint-staged": {
+    "docs/**/*.md": "prettier --write"
   },
   "engines": {
     "node": "22"
