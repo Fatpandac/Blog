@@ -1,11 +1,11 @@
 <template>
-  <div ref="forceGraph" class="h-87vh w-full"></div>
+  <div ref="forceGraph" class="posts-graph"></div>
 </template>
 
 <script setup lang="ts">
 import ForceGraph, { LinkObject, NodeObject } from 'force-graph';
 import type { Post } from '../../data/posts.data';
-import { computed, onMounted, ref, watch, watchEffect } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch, watchEffect } from 'vue';
 import * as d3 from 'd3-force';
 import { useData, useRoute, useRouter } from 'vitepress';
 type Node = { id: string; color: string; type: string };
@@ -69,12 +69,18 @@ onMounted(() => {
     .height(forceGraph.value?.clientHeight || 600)
     .d3Force('link', d3.forceLink().distance(50))
     .d3Force('charge', d3.forceManyBody().strength(-200));
+  window.addEventListener('resize', resizeGraph);
 });
 
-window.addEventListener('resize', () => {
+function resizeGraph() {
   if (forceGraph.value && graph.value) {
     graph.value.width(forceGraph.value.clientWidth).height(forceGraph.value.clientHeight).zoomToFit(300);
   }
+}
+
+onUnmounted(() => {
+  window.removeEventListener('resize', resizeGraph);
+  graph.value?._destructor();
 });
 
 watch(data.isDark, () => {
@@ -157,3 +163,17 @@ watchEffect(() => {
   }
 });
 </script>
+
+<style scoped>
+.posts-graph {
+  position: fixed;
+  inset: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px)) 0 0;
+}
+</style>
+
+<style>
+html:has(.posts-graph) {
+  overflow: hidden;
+  scrollbar-gutter: auto;
+}
+</style>
