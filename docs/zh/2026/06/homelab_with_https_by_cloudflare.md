@@ -22,7 +22,7 @@ import HomelabCloudflareTopology from '../../../.vitepress/theme/components/Atom
 来实现 DNS 查找树莓派 IP 然后通过自带签证来实现 https 具体实现可以看看之前的[文章](../../2025/11/local_domain.md)。
 
 不过后面发现有一个问题 Gitea 如果使用的是自签证的话 auth 登录的时候就没有办法使用 Passkey 了，为了简化登录的麻烦我在登录注册
-网站的时候我基本都会优先选择 Passkey 登录，所以这个问题就比较麻烦了，后来我就想到了一个办法就是通过 Cloudflare 来实现 https 
+网站的时候我基本都会优先选择 Passkey 登录，所以这个问题就比较麻烦了，后来我就想到了一个办法就是通过 Cloudflare 来实现 https
 以及 DNS 解析，这样就可以直接使用 Cloudflare 的证书来实现 https 了。
 
 <HomelabCloudflareTopology />
@@ -33,7 +33,7 @@ import HomelabCloudflareTopology from '../../../.vitepress/theme/components/Atom
 gitea.fatpandac.com {
     tls {
         # 这里需要替换成你自己的 Cloudflare API Token
-        dns cloudflare XXXXXXXXXXXXXXXXXXXXXXXXXX 
+        dns cloudflare XXXXXXXXXXXXXXXXXXXXXXXXXX
     }
     reverse_proxy localhost:3000
 }
