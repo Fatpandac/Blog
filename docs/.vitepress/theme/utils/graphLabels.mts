@@ -39,3 +39,22 @@ export function placeGraphLabel(
   candidates.sort((a, b) => distance(a) - distance(b))
   return candidates.find(fits) || null
 }
+
+type Point = { x: number; y: number }
+
+export function isInHoverCorridor(point: Point, source: Point, targets: LabelBox[]): boolean {
+  const cross = (a: Point, b: Point, p: Point) => (b.x - a.x) * (p.y - a.y) - (b.y - a.y) * (p.x - a.x)
+  return targets.some(box => {
+    if (point.x >= box.left && point.x <= box.right && point.y >= box.top && point.y <= box.bottom) return true
+    const corners = [
+      { x: box.left, y: box.top }, { x: box.right, y: box.top },
+      { x: box.right, y: box.bottom }, { x: box.left, y: box.bottom },
+    ]
+    return corners.some((a, index) => {
+      const b = corners[(index + 1) % corners.length]
+      if (Math.abs(cross(source, a, b)) < 1e-8) return false
+      const signs = [cross(source, a, point), cross(a, b, point), cross(b, source, point)]
+      return signs.every(value => value >= -1e-8) || signs.every(value => value <= 1e-8)
+    })
+  })
+}
